@@ -8,6 +8,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Scanner;
 
 class Test
 {
@@ -16,23 +17,16 @@ class Test
     {
 
 
+        Scanner reader = new Scanner(System.in);  // Reading from System.in
+
+        System.out.println("Enter path: ");
+        String path = reader.next();
+
+
       InputExcel input = new  InputExcel("C:\\MyFiles\\Программирование\\Java\\test.xlsx");
-      ArrayList<String> ref = new ArrayList<>();
+      PrimaryParsing pp = new PrimaryParsing(input.PrimaryRef);
+      pp.ShowLists();
 
-      XSSFSheet sheet = input.book.getSheetAt(0);
-
-
-        Iterator rowIter = sheet.rowIterator();
-        while (rowIter.hasNext()) {
-            XSSFRow row = (XSSFRow) rowIter.next();
-            XSSFCell cell = row.getCell(0);
-            ref.add(cell.getRichStringCellValue().getString());
-
-        }
-
-
-        for (String  x : ref)
-            System.out.println(x);
 
 
 
