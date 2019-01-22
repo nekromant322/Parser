@@ -11,7 +11,8 @@ public class PrimaryParsing
         PrimeRef = new ArrayList<>();
         for (String x : RawReferences)
         {
-            if (x.substring(-1, 2).equals("http") == false )
+            
+            if (x.substring(0, 4).equals("http") == false )
             {
                 x = "http://" + x;
             }
