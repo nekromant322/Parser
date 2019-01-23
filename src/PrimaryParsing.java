@@ -69,7 +69,7 @@ public class PrimaryParsing
         {
             try
             {
-                doc = Jsoup.connect(x).get();
+                doc = Jsoup.connect(x).userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0").get();
             }
             catch (IOException e)
             {
@@ -134,19 +134,20 @@ public class PrimaryParsing
     }
     void FinalParsing(ArrayList<String> Kw)
     {
-        System.err.println("Список совпадений");
+
         Document doc = new Document("");
         for(String secondUrl : SecRef)
         {
 
             for(String kw : Kw)
             {
-                Pattern p = Pattern.compile("(?i)[\\w\\d\\s\\-\\ă\\Ă\\Î\\î\\ş\\Ş\\ţ\\Ţ\\ș\\Ș\\ț\\Ț\\Â\\â\\'\\,]*"+ kw + ".*?(?=\\.|\\<|\\!|\\?|\\n|\\t|$)");
+                Pattern p = Pattern.compile("(?i)[\\w\\d\\s\\-\\ă\\Ă\\Î\\î\\ş\\Ş\\ţ\\Ţ\\ș\\Ș\\ț\\Ț\\Â\\â\\'\\,]* "+kw+ " .*?(?=\\.|\\<|\\!|\\?|\\n|\\t|$|\")");
 
                 try
                 {
-                    doc = Jsoup.connect(secondUrl).get();
+                    doc = Jsoup.connect(secondUrl) .userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0").get();
                 }
+
                 catch(IllegalArgumentException e)
                 {
                     System.err.println("Битая ссылка");

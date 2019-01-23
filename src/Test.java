@@ -9,18 +9,14 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class Test
 {
 
     public static void main(String[]args)
     {
-
-        String example = "https://www.nytimes.com/vi-assets/static-assets/global-a2de946a9a0e78407da4b3405271f391.css";
-        if(example.contains(".css"))
-        {
-            System.out.println("contains");
-        }
 
 
 
@@ -33,7 +29,7 @@ class Test
       PrimaryParsing pp = new PrimaryParsing(input.PrimaryRef);
       pp.SearchSecRef();
       pp.ShowLists();
-        System.out.println("TEEEEEEEEEEEEEEEEEXT");
+
       pp.FinalParsing(input.KeyWords);
 
 
