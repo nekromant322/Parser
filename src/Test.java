@@ -24,17 +24,17 @@ class Test
 
 
 
-        Scanner reader = new Scanner(System.in);  // Reading from System.in
 
-        System.out.println("Enter path: ");
-        String path = reader.next();
+
+
 
 
       InputExcel input = new  InputExcel("C:\\MyFiles\\Программирование\\Java\\test.xlsx");
       PrimaryParsing pp = new PrimaryParsing(input.PrimaryRef);
       pp.SearchSecRef();
       pp.ShowLists();
-
+        System.out.println("TEEEEEEEEEEEEEEEEEXT");
+      pp.FinalParsing(input.KeyWords);
 
 
 

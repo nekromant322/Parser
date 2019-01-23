@@ -79,8 +79,7 @@ public class PrimaryParsing
             }
 
 
-            String name = doc.title();
-            System.out.println("Name of page html: " + name);
+
 
             Elements urls = doc.getElementsByTag("a");
 
@@ -107,10 +106,12 @@ public class PrimaryParsing
             try
             {
 
-                if(x.contains(".css") || x.contains(".js") || x.contains(".ico") || x.contains(".png"))
+                if(x.contains("css") || x.contains(".js") || x.contains(".ico") || x.contains(".png") || x.contains(".xml"))
                 {
                     SecRef.remove(i);
+                    i--;
                 }
+
             }
             catch(StringIndexOutOfBoundsException e)
             {
@@ -123,6 +124,74 @@ public class PrimaryParsing
                 e.printStackTrace();
             }
         }
+        for(String x : PrimeRef) //добавление первичных ссылок в начале финального списка
+        {
+            SecRef.add(0,x);
+        }
+
+    }
+    void FinalParsing(ArrayList<String> Kw)
+    {
+        Document doc = new Document("");
+        for(String secondUrl : SecRef)
+        {
+
+/*
+            try
+            {
+                doc = Jsoup.parse(secondUrl);
+                Element link = doc.select("a").first();
+                String text = doc.body().text(); // "An example link"
+                String linkText = link.text();
+                System.out.println(linkText);
+
+            }
+            catch(NullPointerException e)
+            {
+                System.err.println("Битая ссылка");
+            }
+*/
+
+
+
+
+            for(String kw : Kw)
+            {
+                try
+                {
+                    doc = Jsoup.connect(secondUrl).get();
+                }
+                catch(IllegalArgumentException e)
+                {
+                    System.err.println("Битая ссылка");
+                }
+                catch (IOException e)
+                {
+                    System.err.println("Ошибка при подключении к " + secondUrl + " ,запрос отклонен");
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+
+
+
+
+                Elements texts = doc.getElementsByTag("p");
+                /*
+                for (Element onep : texts)
+                {
+                    System.out.println("<p " + onep.toString() );
+                }
+                */
+
+            }
+
+        }
+
+
+
+
 
     }
 }
