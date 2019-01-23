@@ -5,6 +5,7 @@ import org.jsoup.select.Elements;
 
 
 import java.io.IOException;
+import java.lang.annotation.Repeatable;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -13,11 +14,12 @@ public class PrimaryParsing
 {
     public ArrayList<String> PrimeRef;
     public ArrayList<String> SecRef;
-
+    public ArrayList<String> Repeats;
 
     PrimaryParsing(ArrayList<String> RawReferences)
     {
         PrimeRef = new ArrayList<>();
+        Repeats = new ArrayList<>();
         for (String x : RawReferences)
         {
 
@@ -135,13 +137,15 @@ public class PrimaryParsing
     void FinalParsing(ArrayList<String> Kw)
     {
 
+        OutputExcel output = new OutputExcel();
         Document doc = new Document("");
+
         for(String secondUrl : SecRef)
         {
-
+            System.out.println("поиск по ссылке " + secondUrl);
             for(String kw : Kw)
             {
-                Pattern p = Pattern.compile("(?i)[\\w\\d\\s\\-\\ă\\Ă\\Î\\î\\ş\\Ş\\ţ\\Ţ\\ș\\Ș\\ț\\Ț\\Â\\â\\'\\,]* "+kw+ " .*?(?=\\.|\\<|\\!|\\?|\\n|\\t|$|\")");
+                Pattern p = Pattern.compile("(?i)[\\w\\d\\s\\-\\ă\\Ă\\Î\\î\\ş\\Ş\\ţ\\Ţ\\ș\\Ș\\ț\\Ț\\Â\\â\\'\\,]* ?"+kw+ " ?.*?(?=\\.|\\<|\\!|\\?|\\n|\\t|$|\")");
 
                 try
                 {
@@ -150,7 +154,8 @@ public class PrimaryParsing
 
                 catch(IllegalArgumentException e)
                 {
-                    System.err.println("Битая ссылка");
+                    System.err.println("Битая ссылка:" + secondUrl);
+
                 }
                 catch (IOException e)
                 {
@@ -163,21 +168,21 @@ public class PrimaryParsing
 
 
 
-                Elements texts = doc.getElementsByTag("p");
-
-                for (Element onep : texts)
-                {
-                    String to_check = onep.toString();
+                String textHTML = doc.html();
 
 
-
-
-                    Matcher m = p.matcher(to_check);
-                    while(m.find())
+                    Matcher m = p.matcher(textHTML);
+                    while( m.find())
                     {
-                        System.out.println(m.group());
+                        if(!Repeats.contains(m.group()))
+                        {
+                            Repeats.add(m.group());
+                            System.out.println(m.group()); //тут будет сохранение в эксель
+                            output.SaveData();
+                        }
+
                     }
-                }
+
 
 
 
