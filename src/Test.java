@@ -25,6 +25,7 @@ class Test
 
       InputExcel input = new  InputExcel("C:\\MyFiles\\Программирование\\Java\\test.xlsx");
       PrimaryParsing pp = new PrimaryParsing(input.PrimaryRef);
+      pp.SearchSecRef();
       pp.ShowLists();
 
 
