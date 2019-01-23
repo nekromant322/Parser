@@ -55,7 +55,7 @@ public class PrimaryParsing
             System.err.println("Не найдены вторичные ссылки");
         }
 
-
+        System.out.println("Кол-во полученных вторичных ссылок :" +SecRef.size() );
     }
     void SearchSecRef()
     {
@@ -101,19 +101,28 @@ public class PrimaryParsing
         }
         for(int i = 0 ; i < SecRef.size();i++)  //подтираем ненужные с ресурсами
         {
+
+            String x = SecRef.get(i);
+
             try
             {
 
-                if(SecRef.get(i).contains(".css") || SecRef.get(i).contains(".js") || SecRef.get(i).contains(".ico") || SecRef.get(i).contains(".png"))
+                if(x.contains(".css") || x.contains(".js") || x.contains(".ico") || x.contains(".png"))
                 {
-                    SecRef.remove(SecRef.get(i));
+                    SecRef.remove(i);
                 }
             }
-            catch(NullPointerException e)
+            catch(StringIndexOutOfBoundsException e)
             {
+
                 System.err.println("Обнаружена битая вторичная ссылка, поиск по ней не производится");
+                SecRef.remove(i);
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
             }
         }
-        System.out.println("Кол-во полученных вторичных ссылок :" +SecRef.size() );
+
     }
 }

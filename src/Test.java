@@ -16,6 +16,13 @@ class Test
     public static void main(String[]args)
     {
 
+        String example = "https://www.nytimes.com/vi-assets/static-assets/global-a2de946a9a0e78407da4b3405271f391.css";
+        if(example.contains(".css"))
+        {
+            System.out.println("contains");
+        }
+
+
 
         Scanner reader = new Scanner(System.in);  // Reading from System.in
 
