@@ -61,6 +61,8 @@ public class PrimaryParsing
     {
 
         Document doc = new Document("");
+        SecRef = new ArrayList<>();
+
         for(String x : PrimeRef)
         {
             try
@@ -81,14 +83,37 @@ public class PrimaryParsing
             System.out.println("Name of page html: " + name);
 
             Elements urls = doc.getElementsByTag("a");
+
             for(Element url : urls)
             {
                 //... и вытаскиваем их название...
-                System.out.println("\nhref Mayak <a> "+url.absUrl("href"));
-
+                //System.out.println("\nhref  <a> "+url.absUrl("href"));
+                SecRef.add(url.absUrl("href"));
+            }
+           Elements urls1 = doc.getElementsByTag("link");
+            for(Element url : urls1)
+            {
+                //... и вытаскиваем их название...
+                //System.out.println("\nhref  <link> "+url.absUrl("href"));
+                SecRef.add(url.absUrl("href"));
             }
 
         }
+        for(int i = 0 ; i < SecRef.size();i++)  //подтираем ненужные с ресурсами
+        {
+            try
+            {
 
+                if(SecRef.get(i).contains(".css") || SecRef.get(i).contains(".js") || SecRef.get(i).contains(".ico") || SecRef.get(i).contains(".png"))
+                {
+                    SecRef.remove(SecRef.get(i));
+                }
+            }
+            catch(NullPointerException e)
+            {
+                System.err.println("Обнаружена битая вторичная ссылка, поиск по ней не производится");
+            }
+        }
+        System.out.println("Кол-во полученных вторичных ссылок :" +SecRef.size() );
     }
 }
