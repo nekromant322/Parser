@@ -6,6 +6,7 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -15,7 +16,7 @@ import java.util.regex.Pattern;
 class Test
 {
 
-    public static void main(String[]args)
+    public static void main(String[]args) throws FileNotFoundException
     {
 
 

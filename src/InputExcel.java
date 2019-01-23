@@ -18,24 +18,6 @@ public class InputExcel
     public ArrayList<String> KeyWords;
     private XSSFWorkbook book;
 
-
-    public static void writeWorkbook(HSSFWorkbook wb, String fileName)
-    {
-        try
-        {
-            FileOutputStream fileOut = new FileOutputStream(fileName);
-            wb.write(fileOut);
-            fileOut.close();
-        }
-        catch (Exception e)
-        {
-            //Обработка ошибки
-        }
-    }
-
-
-
-
     InputExcel(String filename)
      {
         try {

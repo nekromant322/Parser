@@ -4,6 +4,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.annotation.Repeatable;
 import java.util.ArrayList;
@@ -134,10 +135,10 @@ public class PrimaryParsing
         }
 
     }
-    void FinalParsing(ArrayList<String> Kw)
+    void FinalParsing(ArrayList<String> Kw) throws FileNotFoundException
     {
 
-        OutputExcel output = new OutputExcel();
+        OutputExcel output = new OutputExcel("C:\\MyFiles\\Программирование\\Java\\output.xlsx");
         Document doc = new Document("");
 
         for(String secondUrl : SecRef)
@@ -174,13 +175,12 @@ public class PrimaryParsing
                     Matcher m = p.matcher(textHTML);
                     while( m.find())
                     {
-                        if(!Repeats.contains(m.group()))
+                        if (!Repeats.contains(m.group()))
                         {
                             Repeats.add(m.group());
                             System.out.println(m.group()); //тут будет сохранение в эксель
-                            output.SaveData();
+                            output.SaveData(secondUrl, kw, m.group());
                         }
-
                     }
 
 
