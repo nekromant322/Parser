@@ -135,7 +135,7 @@ public class PrimaryParsing
         }
 
     }
-    void FinalParsing(ArrayList<String> Kw) throws FileNotFoundException
+    void FinalParsing(ArrayList<String> Kw) throws IOException
     {
 
         OutputExcel output = new OutputExcel("C:\\MyFiles\\Программирование\\Java\\output.xlsx");

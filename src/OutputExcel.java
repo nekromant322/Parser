@@ -27,8 +27,8 @@ public class OutputExcel
 
 
     }
-   void  SaveData(String url, String kw, String text)
-    {
+   void  SaveData(String url, String kw, String text) throws IOException
+   {
         Row row = sheet.createRow(counter);
 
 
@@ -44,21 +44,21 @@ public class OutputExcel
         sheet.autoSizeColumn(1);
         sheet.autoSizeColumn(2);
         counter++;
+        if(counter == 10)
+        {
+            this.SaveAndExit();
+        }
     }
     @SuppressWarnings("deprecation")
-    @Override
-    protected void finalize() throws Throwable
+
+   void SaveAndExit() throws IOException
     {
-        try
-        {
+
             fs = new FileOutputStream(filename);
             book.write(fs); //запись изменений в файл
             book.close();
-        }
-        finally
-        {
-            super.finalize();
-        }
+            System.exit(0);
+
     }
 
 }
