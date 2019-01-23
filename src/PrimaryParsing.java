@@ -6,6 +6,8 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PrimaryParsing
 {
@@ -132,31 +134,15 @@ public class PrimaryParsing
     }
     void FinalParsing(ArrayList<String> Kw)
     {
+        System.err.println("Список совпадений");
         Document doc = new Document("");
         for(String secondUrl : SecRef)
         {
 
-/*
-            try
-            {
-                doc = Jsoup.parse(secondUrl);
-                Element link = doc.select("a").first();
-                String text = doc.body().text(); // "An example link"
-                String linkText = link.text();
-                System.out.println(linkText);
-
-            }
-            catch(NullPointerException e)
-            {
-                System.err.println("Битая ссылка");
-            }
-*/
-
-
-
-
             for(String kw : Kw)
             {
+                Pattern p = Pattern.compile("(?i)[\\w\\d\\s\\-\\ă\\Ă\\Î\\î\\ş\\Ş\\ţ\\Ţ\\ș\\Ș\\ț\\Ț\\Â\\â\\'\\,]*"+ kw + ".*?(?=\\.|\\<|\\!|\\?|\\n|\\t|$)");
+
                 try
                 {
                     doc = Jsoup.connect(secondUrl).get();
@@ -176,14 +162,26 @@ public class PrimaryParsing
 
 
 
-
                 Elements texts = doc.getElementsByTag("p");
-                /*
+
                 for (Element onep : texts)
                 {
-                    System.out.println("<p " + onep.toString() );
+                    String to_check = onep.toString();
+
+
+
+
+                    Matcher m = p.matcher(to_check);
+                    while(m.find())
+                    {
+                        System.out.println(m.group());
+                    }
                 }
-                */
+
+
+
+
+
 
             }
 
