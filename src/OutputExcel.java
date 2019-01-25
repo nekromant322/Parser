@@ -12,7 +12,7 @@ public class OutputExcel
 {
 
     private XSSFWorkbook book;
-    private int counter;
+    public int counter;
     private Sheet sheet;
     FileOutputStream fs;
     String filename;
@@ -27,7 +27,7 @@ public class OutputExcel
 
 
     }
-   void  SaveData(String url, String kw, String text) throws IOException
+   void SaveData(String url, String kw, String text) throws IOException
    {
         Row row = sheet.createRow(counter);
 
@@ -43,16 +43,17 @@ public class OutputExcel
 
         sheet.autoSizeColumn(1);
         sheet.autoSizeColumn(2);
-        counter++;
-        if(counter == 10)
+        this.counter++;
+       /* if(counter ==10 )
         {
             this.SaveAndExit();
-        }
+        }*/
     }
     @SuppressWarnings("deprecation")
 
    void SaveAndExit() throws IOException
     {
+
 
             fs = new FileOutputStream(filename);
             book.write(fs); //запись изменений в файл
@@ -60,5 +61,11 @@ public class OutputExcel
             System.exit(0);
 
     }
+    void Save() throws IOException
+    {
+        fs = new FileOutputStream(filename);
+        book.write(fs); //запись изменений в файл
+    }
+
 
 }

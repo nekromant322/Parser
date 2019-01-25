@@ -8,6 +8,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class InputExcel
@@ -52,7 +53,8 @@ public class InputExcel
              XSSFCell cell = row.getCell(0);
              KeyWords.add(cell.getRichStringCellValue().getString());
          }
-
+         PrimaryRef.removeAll(Arrays.asList("", null));
+         KeyWords.removeAll(Arrays.asList("", null));
 
     }
 }

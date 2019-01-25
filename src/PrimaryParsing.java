@@ -4,10 +4,11 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.lang.annotation.Repeatable;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -24,18 +25,25 @@ public class PrimaryParsing
         for (String x : RawReferences)
         {
 
-            if (x.substring(0, 4).equals("http") == false )
+            try
             {
-                x = "http://" + x;
+                if (x.substring(0, 4).equals("http") == false)
+                {
+                    x = "http://" + x;
+                }
+                //НАДО ИСПРАВИТЬ
+                StringBuffer buffer = new StringBuffer(x);
+                if (x.charAt(x.length() - 1) == '/')
+                {
+                    buffer.delete(buffer.length() - 1, buffer.length());
+                    x = buffer.toString();
+                }
+                PrimeRef.add(x);
             }
-
-            StringBuffer buffer = new StringBuffer(x);
-            if (x.charAt(x.length() - 1) == '/')
+            catch(Exception e)
             {
-                buffer.delete(buffer.length() - 1, buffer.length());
-                x = buffer.toString();
+                PrimeRef.add(x);
             }
-            PrimeRef.add(x);
         }
     }
 
@@ -62,7 +70,7 @@ public class PrimaryParsing
 
         System.out.println("Кол-во полученных вторичных ссылок :" +SecRef.size() );
     }
-    void SearchSecRef()
+    void SearchSecRef() throws IOException
     {
 
         Document doc = new Document("");
@@ -77,6 +85,10 @@ public class PrimaryParsing
             catch (IOException e)
             {
                 System.err.println("Ошибка при подключении к " + x + " ,запрос отклонен");
+            }
+            catch(IllegalArgumentException e)
+            {
+                System.err.println("Неверная ссылка " + x + " ,запрос отклонен");
             }
             catch(Exception e)
             {
@@ -111,7 +123,7 @@ public class PrimaryParsing
             try
             {
 
-                if(x.contains("css") || x.contains(".js") || x.contains(".ico") || x.contains(".png") || x.contains(".xml"))
+                if(x.contains("css") || x.contains(".js") || x.contains(".ico") || x.contains(".png") || x.contains(".xml") || x.contains(".svg"))
                 {
                     SecRef.remove(i);
                     i--;
@@ -129,15 +141,29 @@ public class PrimaryParsing
                 e.printStackTrace();
             }
         }
+       /* FileOutputStream of = new FileOutputStream("C:\\MyFiles\\Программирование\\Java\\2nd_urls.txt");
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(of));
+        for(int i = 0 ; i < SecRef.size();i++)  //подтираем ненужные с ресурсами
+        {
+            bw.write(SecRef.get(i) + "\n");
+        }
+        bw.close();
+        */
         for(String x : PrimeRef) //добавление первичных ссылок в начале финального списка
         {
             SecRef.add(0,x);
         }
+        Set<String> set = new HashSet<>(SecRef);
+        SecRef.clear();
+        SecRef.addAll(set);
+
+
 
     }
     void FinalParsing(ArrayList<String> Kw) throws IOException
     {
 
+        int i = 0;
         OutputExcel output = new OutputExcel("C:\\MyFiles\\Программирование\\Java\\output.xlsx");
         Document doc = new Document("");
 
@@ -146,6 +172,7 @@ public class PrimaryParsing
             System.out.println("поиск по ссылке " + secondUrl);
             for(String kw : Kw)
             {
+                System.out.println("поиск по слову " + kw);
                 Pattern p = Pattern.compile("(?i)[\\w\\d\\s\\-\\ă\\Ă\\Î\\î\\ş\\Ş\\ţ\\Ţ\\ș\\Ș\\ț\\Ț\\Â\\â\\'\\,]* ?"+kw+ " ?.*?(?=\\.|\\<|\\!|\\?|\\n|\\t|$|\")");
 
                 try
@@ -178,22 +205,19 @@ public class PrimaryParsing
                         if (!Repeats.contains(m.group()))
                         {
                             Repeats.add(m.group());
+
                             System.out.println(m.group()); //тут будет сохранение в эксель
                             output.SaveData(secondUrl, kw, m.group());
                         }
                     }
-
-
-
-
-
-
-
             }
-
+            i++;
+            System.out.println("Пройдено "+ i +" из "+ SecRef.size());
+            System.out.println("Кол-во найденных результатов: " + output.counter);
+            output.Save();
         }
 
-
+        output.SaveAndExit();
 
 
 
