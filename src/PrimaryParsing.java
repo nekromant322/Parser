@@ -170,29 +170,30 @@ public class PrimaryParsing
         for(String secondUrl : SecRef)
         {
             System.out.println("поиск по ссылке " + secondUrl);
+            try
+            {
+                doc = Jsoup.connect(secondUrl).userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0").get();
+            }
+
+            catch(IllegalArgumentException e)
+            {
+                System.err.println("Битая ссылка:" + secondUrl);
+
+            }
+            catch (IOException e)
+            {
+                System.err.println("Ошибка при подключении к " + secondUrl + " ,запрос отклонен");
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
             for(String kw : Kw)
             {
                 System.out.println("поиск по слову " + kw);
                 Pattern p = Pattern.compile("(?i)[\\w\\d\\s\\-\\ă\\Ă\\Î\\î\\ş\\Ş\\ţ\\Ţ\\ș\\Ș\\ț\\Ț\\Â\\â\\'\\,]* ?"+kw+ " ?.*?(?=\\.|\\<|\\!|\\?|\\n|\\t|$|\")");
 
-                try
-                {
-                    doc = Jsoup.connect(secondUrl) .userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0").get();
-                }
 
-                catch(IllegalArgumentException e)
-                {
-                    System.err.println("Битая ссылка:" + secondUrl);
-
-                }
-                catch (IOException e)
-                {
-                    System.err.println("Ошибка при подключении к " + secondUrl + " ,запрос отклонен");
-                }
-                catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
 
 
 
