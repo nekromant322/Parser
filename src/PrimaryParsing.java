@@ -190,7 +190,7 @@ public class PrimaryParsing
             }
             for(String kw : Kw)
             {
-                System.out.println("поиск по слову " + kw);
+               // System.out.println("поиск по слову " + kw);
                 Pattern p = Pattern.compile("(?i)[\\w\\d\\s\\-\\ă\\Ă\\Î\\î\\ş\\Ş\\ţ\\Ţ\\ș\\Ș\\ț\\Ț\\Â\\â\\'\\,]* ?"+kw+ " ?.*?(?=\\.|\\<|\\!|\\?|\\n|\\t|$|\")");
 
 

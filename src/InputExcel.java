@@ -53,8 +53,8 @@ public class InputExcel
              XSSFCell cell = row.getCell(0);
              KeyWords.add(cell.getRichStringCellValue().getString());
          }
-         PrimaryRef.removeAll(Arrays.asList("", null));
-         KeyWords.removeAll(Arrays.asList("", null));
+         PrimaryRef.removeAll(Arrays.asList("", null, " "));
+         KeyWords.removeAll(Arrays.asList("", null, " "));
 
     }
 }
