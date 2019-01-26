@@ -123,7 +123,7 @@ public class PrimaryParsing
             try
             {
 
-                if(x.contains("css") || x.contains(".js") || x.contains(".ico") || x.contains(".png") || x.contains(".xml") || x.contains(".svg"))
+                if(x.contains("linkedin.com") || x.contains("twitter") || x.contains("vk.com") || x.contains("facebook") || x.contains("css") || x.contains(".js") || x.contains(".ico") || x.contains(".png") || x.contains(".xml") || x.contains(".svg"))
                 {
                     SecRef.remove(i);
                     i--;
@@ -188,18 +188,14 @@ public class PrimaryParsing
             {
                 e.printStackTrace();
             }
+            String textHTMLraw = doc.html();
+            HtmlToEnglish ht = new HtmlToEnglish(textHTMLraw);
+            String textHTML = ht.NormalText;
             for(String kw : Kw)
             {
                // System.out.println("поиск по слову " + kw);
                 Pattern p = Pattern.compile("(?i)[\\w\\d\\s\\-\\ă\\Ă\\Î\\î\\ş\\Ş\\ţ\\Ţ\\ș\\Ș\\ț\\Ț\\Â\\â\\'\\,]* ?"+kw+ " ?.*?(?=\\.|\\<|\\!|\\?|\\n|\\t|$|\")");
 
-
-
-
-
-                String textHTMLraw = doc.html();
-                HtmlToEnglish ht = new HtmlToEnglish(textHTMLraw);
-                String textHTML = ht.NormalText;
 
 
                     Matcher m = p.matcher(textHTML);

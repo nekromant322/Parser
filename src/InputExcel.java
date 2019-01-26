@@ -56,6 +56,13 @@ public class InputExcel
          PrimaryRef.removeAll(Arrays.asList("", null, " "));
          KeyWords.removeAll(Arrays.asList("", null, " "));
 
+
+         for(String x : KeyWords)
+         {
+             HtmlToEnglish hm = new HtmlToEnglish(x);
+             x = hm.NormalText;
+         }
+
     }
 }
  //HSSFSheet sheet= wb.createSheet(["имя листа"]) создание нового
