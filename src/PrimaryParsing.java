@@ -17,9 +17,10 @@ public class PrimaryParsing
     public ArrayList<String> PrimeRef;
     public ArrayList<String> SecRef;
     public ArrayList<String> Repeats;
-
-    PrimaryParsing(ArrayList<String> RawReferences)
+    public String outputpath;
+    PrimaryParsing(ArrayList<String> RawReferences, String outpath)
     {
+        outputpath = outpath;
         PrimeRef = new ArrayList<>();
         Repeats = new ArrayList<>();
         for (String x : RawReferences)
@@ -164,7 +165,7 @@ public class PrimaryParsing
     {
 
         int i = 0;
-        OutputExcel output = new OutputExcel("C:\\MyFiles\\Программирование\\Java\\output.xlsx");
+        OutputExcel output = new OutputExcel(outputpath);
         Document doc = new Document("");
 
         for(String secondUrl : SecRef)
@@ -213,7 +214,7 @@ public class PrimaryParsing
             i++;
             System.out.println("Пройдено "+ i +" из "+ SecRef.size());
             System.out.println("Кол-во найденных результатов: " + output.counter);
-            output.Save();
+
         }
 
         output.SaveAndExit();

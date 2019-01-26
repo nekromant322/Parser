@@ -43,15 +43,21 @@ class Test
         }
 */
 
+       //C:\MyFiles\Программирование\Java\test.xlsx
+        Scanner reader = new Scanner(System.in);  // Reading from System.in
+        System.out.println("Введите название исходного файла ");
+        System.out.println("Данные в нем должны быть представлены на двух листах");
+        System.out.println("Первый с ссылками в левом столбце, второй с ключевыми словами/фразами");
+        String inputpath  = reader.next();
+        System.out.println("Введите путь к папке, куда следует поместить результат");
+        String outputpath  = reader.next();
+        outputpath = outputpath + "\\ParserResult.xlsx";
+        InputExcel input = new  InputExcel(inputpath);
+        PrimaryParsing pp = new PrimaryParsing(input.PrimaryRef,outputpath);
+        pp.SearchSecRef();
+        pp.ShowLists();
 
-
-
-      InputExcel input = new  InputExcel("C:\\MyFiles\\Программирование\\Java\\test.xlsx");
-      PrimaryParsing pp = new PrimaryParsing(input.PrimaryRef);
-      pp.SearchSecRef();
-      pp.ShowLists();
-
-      pp.FinalParsing(input.KeyWords);
+        pp.FinalParsing(input.KeyWords);
 
 
 

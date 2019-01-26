@@ -96,6 +96,7 @@ public class HtmlToEnglish
         for(int count = 0 ; count < htmltext.length() ; count++)
         {
             char sym = htmltext.charAt(count);
+
             //System.out.println(sym);
             Iterator it = map.entrySet().iterator();
             boolean flag = false;
@@ -120,7 +121,7 @@ public class HtmlToEnglish
 
         }
 
-
+        NormalText =  NormalText.toLowerCase();
 
     }
 
