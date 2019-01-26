@@ -197,7 +197,9 @@ public class PrimaryParsing
 
 
 
-                String textHTML = doc.html();
+                String textHTMLraw = doc.html();
+                HtmlToEnglish ht = new HtmlToEnglish(textHTMLraw);
+                String textHTML = ht.NormalText;
 
 
                     Matcher m = p.matcher(textHTML);
@@ -223,4 +225,5 @@ public class PrimaryParsing
 
 
     }
+
 }
