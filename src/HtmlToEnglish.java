@@ -6,50 +6,49 @@ public class HtmlToEnglish
     public String NormalText = "";
 
     HtmlToEnglish(String htmltext)
-    {
-
+    { System.out.println("Начало обработки");
        Map<String,String> map = new HashMap<String,String>();
 
 
 
-        String A = "ĄÀÁÂÃÄÅĀĂA";
-        String a = "ąàáâãäåāăa";
-        String C = "ĈĊČĆÇC";
-        String c = "ĉċčćçc";
-        String D = "ĐĎD";
-        String d = "đďd";
-        String E = "ĒĔĖĘĚÈÉÊËE";
-        String e = "ēĕėęěèéêëe";
-        String G = "ǦĜĞĠĢG";
-        String g = "ǧĝğġģg";
-        String H = "ĤĦH";
-        String h = "ĥħh";
-        String I = "ĨĪĬĮİÌÍÎÏI";
-        String i = "ĩīĭįıìíîïi";
-        String J = "ĲĴJ";
-        String j = "ĳĵj";
-        String N = "ÑNŃŅŇŊ";
-        String n = "ñnńņňŉŋ";
-        String K = "ǨĶK";
-        String k = "ǩķk";
-        String L = "ĹĻĽĿŁL";
-        String l = "ĺļľŀłl";
-        String O = "ŌŎŐÒÓÔÕÖØO";
-        String o = "ōŏőòóôõöøo";
-        String R = "ŔŖŘR";
-        String r = "ŕŗřr";
-        String S = "ßŚŜŞŠS";
-        String s = "śŝşšs";
-        String T = "ŢŤŦT";
-        String t = "ţťŧt";
-        String U = "ŨŪŬŮŰŲÙÚÛÜU";
-        String u = "ũūŭůűųùúûüu";
-        String Y = "ŶÝŸY";
-        String y = "ŷýÿy";
-        String W = "ŴW";
-        String w = "ŵw";
-        String Z = "ŹŻŽZŹŻŽ";
-        String z = "źżžz";
+        String A = "AĄÀÁÂÃÄÅĀĂ";
+        String a = "aąàáâãäåāă";
+        String C = "CĈĊČĆÇ";
+        String c = "cĉċčćç";
+        String D = "DĐĎ";
+        String d = "dđď";
+        String E = "EĒĔĖĘĚÈÉÊË";
+        String e = "eēĕėęěèéêë";
+        String G = "GǦĜĞĠĢ";
+        String g = "gǧĝğġģ";
+        String H = "HĤĦ";
+        String h = "hĥħ";
+        String I = "IĨĪĬĮİÌÍÎÏ";
+        String i = "iĩīĭįıìíîï";
+        String J = "JĲĴ";
+        String j = "jĳĵ";
+        String N = "NÑŃŇ";
+        String n = "nñńņňŉŋ";
+        String K = "KǨĶ";
+        String k = "kǩķ";
+        String L = "LĹĻĽĿŁ";
+        String l = "lĺļľŀł";
+        String O = "OŌŎŐÒÓÔÕÖØ";
+        String o = "oōŏőòóôõöø";
+        String R = "RŔŖŘ";
+        String r = "rŕŗř";
+        String S = "SßŚŜŞŠ";
+        String s = "sśŝşš";
+        String T = "TŢŤŦ";
+        String t = "tţťŧ";
+        String U = "UŨŪŬŮŰŲÙÚÛÜ";
+        String u = "uũūŭůűųùúûü";
+        String Y = "YŶÝŸ";
+        String y = "yŷýÿ";
+        String W = "WŴ";
+        String w = "wŵ";
+        String Z = "ZŹŻŽŹŻŽ";
+        String z = "zźżž";
         map.put("A",A);
         map.put("a",a);
         map.put("C",C);
@@ -109,10 +108,10 @@ public class HtmlToEnglish
                 String buf2 = sym + "";
                 if (buf.contains(buf2) == true)
                 {
-                   // System.out.println("Zamena");
+                    //System.out.println("Zamena " +buf2);
                     buf = (String) pair.getKey();
                     sym = buf.charAt(0);
-                    flag = true;
+                    break;
                 }
             }
 
@@ -120,10 +119,10 @@ public class HtmlToEnglish
 
 
         }
-
+        System.out.println("Конец обработки");
         NormalText =  NormalText.toLowerCase();
+        System.out.println("Переведено в нижний");
 
     }
-
 
 }

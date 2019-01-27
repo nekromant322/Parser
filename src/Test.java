@@ -6,12 +6,10 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 
+import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -43,6 +41,15 @@ class Test
         }
 */
 
+        JTextField myjtf = new JTextField("whatever you want");
+
+
+        JTextArea textArea = new JTextArea(
+                "This is an editable JTextArea. " +
+                        "A text area is a \"plain\" text component, " +
+                        "which means that although it can display text " +
+                        "in any font, all of the text is in the same font."
+        );
        //C:\MyFiles\Программирование\Java\test.xlsx
         Scanner reader = new Scanner(System.in);  // Reading from System.in
         System.out.println("Введите название исходного файла ");

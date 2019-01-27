@@ -189,9 +189,12 @@ public class PrimaryParsing
             {
                 e.printStackTrace();
             }
+           /*
             String textHTMLraw = doc.html();
             HtmlToEnglish ht = new HtmlToEnglish(textHTMLraw);
             String textHTML = ht.NormalText;
+            */
+            String textHTML = doc.html();
             for(String kw : Kw)
             {
                // System.out.println("поиск по слову " + kw);

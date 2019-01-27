@@ -61,6 +61,7 @@ public class InputExcel
          {
              HtmlToEnglish hm = new HtmlToEnglish(x);
              x = hm.NormalText;
+             System.out.println(x);
          }
 
     }
