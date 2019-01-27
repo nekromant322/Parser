@@ -10,6 +10,7 @@ import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
+import java.io.IOException;
 
 public class Controller {
 
@@ -20,9 +21,17 @@ public class Controller {
     private Button chfile;
 
     @FXML
-    void StartActoin(ActionEvent event)
+    void StartAction(ActionEvent event) throws IOException
     {
         System.out.println("start pushed");
+        String inputpath = "C:\\MyFiles\\Программирование\\Java\\test.xlsx";
+        String outputpath = "C:\\MyFiles\\Программирование\\Java";
+        InputExcel input = new  InputExcel(inputpath);
+        PrimaryParsing pp = new PrimaryParsing(input.PrimaryRef,outputpath);
+        pp.SearchSecRef();
+        pp.ShowLists();
+
+        pp.FinalParsing(input.KeyWords);
     }
 
     @FXML

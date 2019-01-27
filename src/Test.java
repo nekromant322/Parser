@@ -41,16 +41,9 @@ class Test
         }
 */
 
-        JTextField myjtf = new JTextField("whatever you want");
 
-
-        JTextArea textArea = new JTextArea(
-                "This is an editable JTextArea. " +
-                        "A text area is a \"plain\" text component, " +
-                        "which means that although it can display text " +
-                        "in any font, all of the text is in the same font."
-        );
        //C:\MyFiles\Программирование\Java\test.xlsx
+        /*
         Scanner reader = new Scanner(System.in);  // Reading from System.in
         System.out.println("Введите название исходного файла ");
         System.out.println("Данные в нем должны быть представлены на двух листах");
@@ -59,13 +52,17 @@ class Test
         System.out.println("Введите путь к папке, куда следует поместить результат");
         String outputpath  = reader.next();
         outputpath = outputpath + "\\ParserResult.xlsx";
+        */
+
+
+        String inputpath = "C:\\MyFiles\\Программирование\\Java\\test.xlsx";
+        String outputpath = "C:\\MyFiles\\Программирование\\Java";
         InputExcel input = new  InputExcel(inputpath);
         PrimaryParsing pp = new PrimaryParsing(input.PrimaryRef,outputpath);
         pp.SearchSecRef();
         pp.ShowLists();
 
         pp.FinalParsing(input.KeyWords);
-
 
 
     }
