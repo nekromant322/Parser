@@ -1,86 +1,59 @@
+
+import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
-import javax.swing.*;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
-public class Controller {
 
-    @FXML
-    private Button start;
+public class Controller
+{
 
-    @FXML
-    private Button chfile;
+    public static String adress1;
+    public static String adress2;
+    public static String Log = "Логи действий:";
 
-    @FXML
-    void StartAction(ActionEvent event) throws IOException
-    {
-        System.out.println("start pushed");
-        String inputpath = "C:\\MyFiles\\Программирование\\Java\\test.xlsx";
-        String outputpath = "C:\\MyFiles\\Программирование\\Java";
-        InputExcel input = new  InputExcel(inputpath);
-        PrimaryParsing pp = new PrimaryParsing(input.PrimaryRef,outputpath);
-        pp.SearchSecRef();
-        pp.ShowLists();
+        @FXML
+        private Button FindButt;
 
-        pp.FinalParsing(input.KeyWords);
-    }
+        @FXML
+        private TextField Input_Field;
 
-    @FXML
-    void ChooseAction(ActionEvent event)
-    {
-        /*Stage stage = new Stage();
-        System.out.println("action pushed");
-       // MyFrame fr = new MyFrame();
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Resource File");
-        fileChooser.showOpenDialog(stage);
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Text Files", "*.txt"),
-                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),
-                new FileChooser.ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
-                new FileChooser.ExtensionFilter("All Files", "*.*");
+        @FXML
+        private TextField Output_Field;
 
-        File selectedFile = fileChooser.showOpenDialog(stage);
+        @FXML
+        private TextArea Log_Text;
 
-        if (selectedFile != null)
+        @FXML
+        void FindAction(ActionEvent event) throws IOException
         {
-           System.out.println(selectedFile.toString());
-        }*/
 
-        JFileChooser chooser = new JFileChooser();
-        chooser.setCurrentDirectory(new java.io.File("."));
-        chooser.setDialogTitle("choosertitle");
-        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        chooser.setAcceptAllFileFilterUsed(false);
-        FileFilter filter = new FileNameExtensionFilter("Excel file", "xls", "xlsx");
-        chooser.addChoosableFileFilter(filter);
-        if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
-        {
-            System.out.println("getCurrentDirectory(): " + chooser.getCurrentDirectory());
-            System.out.println("getSelectedFile() : " + chooser.getSelectedFile());
-        }
-        else
-        {
-            System.out.println("No Selection ");
+            adress1 = Input_Field.getText().trim();
+            adress2 = Output_Field.getText().trim();
+
+            System.out.println(adress1);
+            System.out.println(adress2);
+            // вывод input output в консоль приложения
+            Log_Text.setText("Hello");
+            Log = Log + "\n" + adress1 + "\n" + adress2;
+            Log_Text.setText(Log);
+            String inputpath = "C:\\MyFiles\\Программирование\\Java\\test.xlsx";
+            String outputpath = "C:\\MyFiles\\Программирование\\Java";
+            InputExcel input = new  InputExcel(inputpath);
+            PrimaryParsing pp = new PrimaryParsing(input.PrimaryRef,outputpath);
+
+            pp.SearchSecRef();
+            pp.ShowLists();
+
+            pp.FinalParsing(input.KeyWords);
+
         }
 
 
 
-
-    }
-
-    public static void main(String[] args)
-    {
-
-    }
 
 }

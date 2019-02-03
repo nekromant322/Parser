@@ -18,8 +18,10 @@ public class PrimaryParsing
     public ArrayList<String> SecRef;
     public ArrayList<String> Repeats;
     public String outputpath;
+    public String log;
     PrimaryParsing(ArrayList<String> RawReferences, String outpath)
     {
+
         outputpath = outpath;
         PrimeRef = new ArrayList<>();
         Repeats = new ArrayList<>();
@@ -51,6 +53,7 @@ public class PrimaryParsing
     void ShowLists()
     {
        System.out.println("Первичные ссылки обработанные");
+
             for (String x : PrimeRef)
             {
                 System.out.println(x);
@@ -59,6 +62,7 @@ public class PrimaryParsing
         {
 
             System.out.println("Вторичные ссылки, полученные после парсинга");
+
             for (String x : SecRef)
             {
                 System.out.println(x);
@@ -171,6 +175,7 @@ public class PrimaryParsing
         for(String secondUrl : SecRef)
         {
             System.out.println("поиск по ссылке " + secondUrl);
+           // log = log + "поиск по ссылке " + secondUrl +  "\n";
             try
             {
                 doc = Jsoup.connect(secondUrl).userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0").get();
@@ -216,6 +221,7 @@ public class PrimaryParsing
             }
             i++;
             System.out.println("Пройдено "+ i +" из "+ SecRef.size());
+
             System.out.println("Кол-во найденных результатов: " + output.counter);
 
         }
