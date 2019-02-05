@@ -221,7 +221,7 @@ public class PrimaryParsing
             }
             i++;
             System.out.println("Пройдено "+ i +" из "+ SecRef.size());
-
+            Controller.ShowConsole("Пройдено "+ i +" из "+ SecRef.size());
             System.out.println("Кол-во найденных результатов: " + output.counter);
 
         }
