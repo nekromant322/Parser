@@ -1,4 +1,6 @@
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
@@ -15,7 +17,7 @@ public class Controller
 
     public static String adress1;
     public static String adress2;
-    public static String Log = "Логи действий:";
+    public static String Log = "";
 
         @FXML
         private Button FindButt;
@@ -35,6 +37,15 @@ public class Controller
         @FXML
         void initialize()
         {
+          /* Log_Text.textProperty().addListener((ChangeListener<Object>) (observable, oldValue, newValue) ->
+           {
+               Log_Text.setScrollTop(Double.MIN_VALUE); //this will scroll to the bottom
+               //use Double.MIN_VALUE to scroll to the top
+           });*/
+
+
+
+
             Task task_log = new Task<Void>()
             {
                 @Override
@@ -43,6 +54,10 @@ public class Controller
                     while(true)
                     {
                         Log_Text.setText(Log);
+                        //Log_Text.appendText("");
+                        Log_Text.positionCaret( Log_Text.getText().length());
+                        Log_Text.setEditable(true);
+                        Log_Text.setScrollTop(Double.MAX_VALUE);
                         Thread.sleep(500);
                     }
                 }
@@ -55,6 +70,7 @@ public class Controller
         @FXML
         void FindAction(ActionEvent event) throws IOException
         {
+            FindButt.setDisable(true);
 
             adress1 = Input_Field.getText().trim();
             adress2 = Output_Field.getText().trim();
@@ -65,13 +81,15 @@ public class Controller
 
 
 
-            Log_Text.setText("Hello");
-            Log = Log + "\n" + adress1 + "\n" + adress2;
+
+            Log = Log + "Входной файл: "  + adress1 + "\n" + "Выходной файл в: "  + adress2+ "\n";
+
             Log_Text.setText(Log);
-            String inputpath = "C:\\MyFiles\\Программирование\\Java\\test.xlsx";
-            String outputpath = "C:\\MyFiles\\Программирование\\Java";
-            InputExcel input = new  InputExcel(inputpath);
-            PrimaryParsing pp = new PrimaryParsing(input.PrimaryRef,outputpath);
+            Log_Text.appendText("");
+            adress1 = "C:\\MyFiles\\Программирование\\Java\\test.xlsx";
+            adress2 = "C:\\MyFiles\\Программирование\\Java";
+            InputExcel input = new  InputExcel(adress1);
+            PrimaryParsing pp = new PrimaryParsing(input.PrimaryRef,adress2);
 
 
 
@@ -89,8 +107,7 @@ public class Controller
 
             new Thread(task).start();
 
-            Log = Log + "Парсинг запущен в отдельном потоке" +"\n";
-            Log_Text.setText(Log);
+
         }
         public static void ShowConsole(String new_log)
         {

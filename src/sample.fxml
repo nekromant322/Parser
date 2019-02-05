@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,10 +15,6 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Button>
-      <ScrollPane layoutY="266.0" prefHeight="134.0" prefWidth="600.0">
-         <content>
-            <TextArea fx:id="Log_Text" prefHeight="149.0" prefWidth="592.0" />
-         </content>
-      </ScrollPane>
+      <TextArea fx:id="Log_Text" layoutY="251.0" prefHeight="149.0" prefWidth="600.0" />
    </children>
 </AnchorPane>

@@ -53,24 +53,28 @@ public class PrimaryParsing
     void ShowLists()
     {
        System.out.println("Первичные ссылки обработанные");
+       Controller.ShowConsole("Первичные ссылки обработанные");
 
             for (String x : PrimeRef)
             {
                 System.out.println(x);
+                Controller.ShowConsole(x);
             }
         try
         {
 
             System.out.println("Вторичные ссылки, полученные после парсинга");
-
+            Controller.ShowConsole("Вторичные ссылки, полученные после парсинга");
             for (String x : SecRef)
             {
                 System.out.println(x);
+                Controller.ShowConsole(x);
             }
         }
         catch(NullPointerException e)
         {
             System.err.println("Не найдены вторичные ссылки");
+            Controller.ShowConsole("Не найдены вторичные ссылки");
         }
 
         System.out.println("Кол-во полученных вторичных ссылок :" +SecRef.size() );
@@ -90,10 +94,12 @@ public class PrimaryParsing
             catch (IOException e)
             {
                 System.err.println("Ошибка при подключении к " + x + " ,запрос отклонен");
+                Controller.ShowConsole("Ошибка при подключении к " + x + " ,запрос отклонен");
             }
             catch(IllegalArgumentException e)
             {
                 System.err.println("Неверная ссылка " + x + " ,запрос отклонен");
+                Controller.ShowConsole("Неверная ссылка " + x + " ,запрос отклонен");
             }
             catch(Exception e)
             {
@@ -139,6 +145,7 @@ public class PrimaryParsing
             {
 
                 System.err.println("Обнаружена битая вторичная ссылка, поиск по ней не производится");
+                Controller.ShowConsole("Обнаружена битая вторичная ссылка, поиск по ней не производится");
                 SecRef.remove(i);
             }
             catch(Exception e)
@@ -175,6 +182,7 @@ public class PrimaryParsing
         for(String secondUrl : SecRef)
         {
             System.out.println("поиск по ссылке " + secondUrl);
+            Controller.ShowConsole("Поиск по ссылке " + secondUrl);
            // log = log + "поиск по ссылке " + secondUrl +  "\n";
             try
             {
@@ -184,11 +192,13 @@ public class PrimaryParsing
             catch(IllegalArgumentException e)
             {
                 System.err.println("Битая ссылка:" + secondUrl);
+                Controller.ShowConsole("Битая ссылка:" + secondUrl);
 
             }
             catch (IOException e)
             {
                 System.err.println("Ошибка при подключении к " + secondUrl + " ,запрос отклонен");
+                Controller.ShowConsole("Ошибка при подключении к " + secondUrl + " ,запрос отклонен");
             }
             catch (Exception e)
             {
@@ -223,6 +233,7 @@ public class PrimaryParsing
             System.out.println("Пройдено "+ i +" из "+ SecRef.size());
             Controller.ShowConsole("Пройдено "+ i +" из "+ SecRef.size());
             System.out.println("Кол-во найденных результатов: " + output.counter);
+            Controller.ShowConsole("Кол-во найденных результатов: " + output.counter);
 
         }
 
