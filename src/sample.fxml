@@ -8,13 +8,16 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #6A5ACD;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
-      <TextField fx:id="Input_Field" layoutX="86.0" layoutY="47.0" prefHeight="38.0" prefWidth="459.0" promptText="Input" />
-      <TextField fx:id="Output_Field" layoutX="86.0" layoutY="114.0" prefHeight="38.0" prefWidth="459.0" promptText="Output" />
+      <TextField fx:id="Input_Field" layoutX="13.0" layoutY="47.0" prefHeight="38.0" prefWidth="199.0" promptText="Input" />
+      <TextField fx:id="Output_Field" layoutX="14.0" layoutY="112.0" prefHeight="38.0" prefWidth="199.0" promptText="Output" />
       <Button fx:id="FindButt" layoutX="253.0" layoutY="181.0" mnemonicParsing="false" onAction="#FindAction" prefHeight="38.0" prefWidth="126.0" style="-fx-background-color: #6495ED;" text="Find">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Button>
       <TextArea fx:id="Log_Text" layoutY="251.0" prefHeight="149.0" prefWidth="600.0" />
+      <Button fx:id="BrowseInputBut" layoutX="227.0" layoutY="54.0" mnemonicParsing="false" onAction="#ChooseInput" text="Browse" />
+      <TextArea fx:id="Input_path" layoutX="300.0" layoutY="48.0" prefHeight="38.0" prefWidth="286.0" />
+      <TextArea fx:id="Output_path" layoutX="300.0" layoutY="112.0" prefHeight="38.0" prefWidth="286.0" />
    </children>
 </AnchorPane>

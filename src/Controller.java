@@ -8,7 +8,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import javax.swing.*;
+import java.io.File;
 import java.io.IOException;
 
 
@@ -30,7 +34,10 @@ public class Controller
 
         @FXML
         private TextArea Log_Text;
-
+        @FXML
+        private TextArea Input_path;
+        @FXML
+        private TextArea Output_path;
         @FXML
         private ScrollPane Scroll;
 
@@ -115,6 +122,32 @@ public class Controller
            Log = Log + new_log + "\n";
           // Log_Text.setText(Log);
         }
+        @FXML
+        void ChooseInput(ActionEvent event) throws IOException
+        {
+            Stage primaryStage = new Stage();
+            primaryStage.setTitle("Extension Filter Example");
+            FileChooser fileChooser = new FileChooser();
+
+            // Set extension filter
+            FileChooser.ExtensionFilter extFilter =
+                    new FileChooser.ExtensionFilter("XLSX files (*.xlsx)", "*.xlsx");
+            fileChooser.getExtensionFilters().add(extFilter);
+
+            // Show open file dialog
+            File file = fileChooser.showOpenDialog(primaryStage);
+            adress1 = file.getAbsolutePath();
+
+            Input_path.setText(adress1);
+
+
+
+
+
+
+
+        }
+
 
 
 
