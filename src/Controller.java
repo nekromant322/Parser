@@ -79,8 +79,7 @@ public class Controller
         {
             FindButt.setDisable(true);
 
-            adress1 = Input_Field.getText().trim();
-            adress2 = Output_Field.getText().trim();
+
 
             System.out.println(adress1);
             System.out.println(adress2);
@@ -89,12 +88,14 @@ public class Controller
 
 
 
-            Log = Log + "Входной файл: "  + adress1 + "\n" + "Выходной файл в: "  + adress2+ "\n";
+            Log = Log + "\n" + "Входной файл: "  + adress1 + "\n" + "Выходной файл в: "  + adress2+ "\n";
 
             Log_Text.setText(Log);
             Log_Text.appendText("");
-            adress1 = "C:\\MyFiles\\Программирование\\Java\\test.xlsx";
-            adress2 = "C:\\MyFiles\\Программирование\\Java";
+           
+
+
+
             InputExcel input = new  InputExcel(adress1);
             PrimaryParsing pp = new PrimaryParsing(input.PrimaryRef,adress2);
 
@@ -125,20 +126,47 @@ public class Controller
         @FXML
         void ChooseInput(ActionEvent event) throws IOException
         {
-            Stage primaryStage = new Stage();
-            primaryStage.setTitle("Extension Filter Example");
-            FileChooser fileChooser = new FileChooser();
+            try
+            {
 
-            // Set extension filter
-            FileChooser.ExtensionFilter extFilter =
-                    new FileChooser.ExtensionFilter("XLSX files (*.xlsx)", "*.xlsx");
-            fileChooser.getExtensionFilters().add(extFilter);
 
-            // Show open file dialog
-            File file = fileChooser.showOpenDialog(primaryStage);
-            adress1 = file.getAbsolutePath();
+                Stage primaryStage = new Stage();
+                primaryStage.setTitle("Extension Filter Example");
+                FileChooser fileChooser = new FileChooser();
 
-            Input_path.setText(adress1);
+                // Set extension filter
+                FileChooser.ExtensionFilter extFilter =
+                        new FileChooser.ExtensionFilter("XLSX files (*.xlsx)", "*.xlsx");
+                fileChooser.getExtensionFilters().add(extFilter);
+
+                // Show open file dialog
+                File file = fileChooser.showOpenDialog(primaryStage);
+                adress1 = file.getAbsolutePath();
+
+                Input_path.setText(adress1);
+                //adress1 = "C:\\MyFiles\\Программирование\\Java\\test.xlsx"; //ДОДЕЛАТЬ
+                adress2 = adress1;
+                int pos = 0;
+                for(int i = adress2.length() - 1 ; i >=0; i--)
+                {
+                    if( adress2.charAt(i) == '\\')
+                    {
+                        pos = i;
+                        break;
+                    }
+                }
+
+                adress2 = adress2.substring(0, pos) ;
+
+            }
+            catch (Exception e)
+            {
+                Log = Log + "Неверно выбран файл" + "\n";
+                e.printStackTrace();
+            }
+
+//C:\MyFiles\Программирование\Java
+
 
 
 
