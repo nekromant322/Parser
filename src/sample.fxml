@@ -16,6 +16,7 @@
       <TextArea fx:id="Log_Text" layoutY="251.0" prefHeight="149.0" prefWidth="600.0" />
       <Button fx:id="BrowseInputBut" layoutX="39.0" layoutY="49.0" mnemonicParsing="false" onAction="#ChooseInput" prefHeight="38.0" prefWidth="63.0" text="Browse" />
       <TextArea fx:id="Input_path" layoutX="134.0" layoutY="49.0" prefHeight="38.0" prefWidth="432.0" />
-      <ProgressBar fx:id="Pb" layoutX="14.0" layoutY="222.0" prefHeight="18.0" prefWidth="575.0" progress="0.0" />
+      <ProgressBar fx:id="Pb" layoutX="14.0" layoutY="222.0" prefHeight="18.0" prefWidth="575.0" />
+      <Button id="StopButton" layoutX="506.0" layoutY="142.0" mnemonicParsing="false"  onAction="#StopAll" prefHeight="52.0" prefWidth="50.0" style="-fx-background-color: #d32828;" text="STOP" />
    </children>
 </AnchorPane>

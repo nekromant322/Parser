@@ -24,22 +24,12 @@ public class Controller
 
         @FXML
         private Button FindButt;
-
-        @FXML
-        private TextField Input_Field;
-
-        @FXML
-        private TextField Output_Field;
-
-
         @FXML
         private TextArea Log_Text;
         @FXML
         private TextArea Input_path;
-        @FXML
-        private TextArea Output_path;
-        @FXML
-        private ScrollPane Scroll;
+
+
 
         @FXML
         final private ProgressBar Pb  = new ProgressBar(0);
@@ -47,11 +37,6 @@ public class Controller
         @FXML
         void initialize()
         {
-          /* Log_Text.textProperty().addListener((ChangeListener<Object>) (observable, oldValue, newValue) ->
-           {
-               Log_Text.setScrollTop(Double.MIN_VALUE); //this will scroll to the bottom
-               //use Double.MIN_VALUE to scroll to the top
-           });*/
             Input_path.setDisable(true);
 
             FindButt.setDisable(true);
@@ -95,7 +80,7 @@ public class Controller
 
             System.out.println(adress1);
             System.out.println(adress2);
-            // вывод input output в консоль приложения
+
 
 
 
@@ -133,7 +118,7 @@ public class Controller
         {
 
            Log = Log + new_log + "\n";
-          // Log_Text.setText(Log);
+
         }
         @FXML
         void ChooseInput(ActionEvent event) throws IOException
@@ -156,7 +141,7 @@ public class Controller
                 adress1 = file.getAbsolutePath();
 
                 Input_path.setText(adress1);
-                //adress1 = "C:\\MyFiles\\Программирование\\Java\\test.xlsx"; //ДОДЕЛАТЬ
+
                 adress2 = adress1;
                 int pos = 0;
                 for(int i = adress2.length() - 1 ; i >=0; i--)
@@ -178,15 +163,13 @@ public class Controller
                 e.printStackTrace();
             }
 
-//C:\MyFiles\Программирование\Java
-
-
-
-
-
-
-
-
+        }
+        @FXML
+        public void StopAll() throws InterruptedException
+        {
+            Log= Log + "Результат сохранен в " + adress2 + "\nРабота программы завершена принудительно\n";
+            Thread.sleep(3000);
+            System.exit(0);
         }
 
 
