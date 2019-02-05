@@ -93,7 +93,7 @@ public class PrimaryParsing
             }
             catch (IOException e)
             {
-                System.err.println("Ошибка при подключении к " + x + " ,запрос отклонен");
+                System.err.println("Ошибка при подключении к " + x + " , запрос отклонен");
                 Controller.ShowConsole("Ошибка при подключении к " + x + " ,запрос отклонен");
             }
             catch(IllegalArgumentException e)
@@ -232,6 +232,7 @@ public class PrimaryParsing
             i++;
             System.out.println("Пройдено "+ i +" из "+ SecRef.size());
             Controller.ShowConsole("Пройдено "+ i +" из "+ SecRef.size());
+            Controller.percent = 1.0f*i/SecRef.size();
             System.out.println("Кол-во найденных результатов: " + output.counter);
             Controller.ShowConsole("Кол-во найденных результатов: " + output.counter);
 

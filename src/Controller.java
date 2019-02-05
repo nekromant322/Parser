@@ -1,13 +1,11 @@
 
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -22,6 +20,7 @@ public class Controller
     public static String adress1;
     public static String adress2;
     public static String Log = "";
+    public static double percent ;
 
         @FXML
         private Button FindButt;
@@ -31,6 +30,7 @@ public class Controller
 
         @FXML
         private TextField Output_Field;
+
 
         @FXML
         private TextArea Log_Text;
@@ -42,6 +42,9 @@ public class Controller
         private ScrollPane Scroll;
 
         @FXML
+        final private ProgressBar Pb  = new ProgressBar(0);
+
+        @FXML
         void initialize()
         {
           /* Log_Text.textProperty().addListener((ChangeListener<Object>) (observable, oldValue, newValue) ->
@@ -49,22 +52,31 @@ public class Controller
                Log_Text.setScrollTop(Double.MIN_VALUE); //this will scroll to the bottom
                //use Double.MIN_VALUE to scroll to the top
            });*/
+            Input_path.setDisable(true);
 
-
-
+            FindButt.setDisable(true);
 
             Task task_log = new Task<Void>()
             {
                 @Override
                 public Void call() throws InterruptedException
                 {
+
                     while(true)
                     {
+
                         Log_Text.setText(Log);
                         //Log_Text.appendText("");
                         Log_Text.positionCaret( Log_Text.getText().length());
                         Log_Text.setEditable(true);
                         Log_Text.setScrollTop(Double.MAX_VALUE);
+                        Log = Log + Pb.getProgress() + "\n";
+                        Pb.setProgress(percent);
+
+
+
+
+
                         Thread.sleep(500);
                     }
                 }
@@ -92,7 +104,7 @@ public class Controller
 
             Log_Text.setText(Log);
             Log_Text.appendText("");
-           
+
 
 
 
@@ -158,6 +170,7 @@ public class Controller
 
                 adress2 = adress2.substring(0, pos) ;
 
+                FindButt.setDisable(false);
             }
             catch (Exception e)
             {
