@@ -168,7 +168,14 @@ public class Controller
         public void StopAll() throws InterruptedException
         {
             Log= Log + "Результат сохранен в " + adress2 + "\nРабота программы завершена принудительно\n";
-            Thread.sleep(3000);
+
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Принудительное завершение");
+            alert.setHeaderText("Поиск не закончен");
+            alert.setContentText("Результаты поиска сохранены в "+ adress2);
+            alert.showAndWait();
+
             System.exit(0);
         }
 
