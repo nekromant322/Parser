@@ -1,3 +1,4 @@
+import javafx.scene.control.Alert;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,12 +18,12 @@ public class PrimaryParsing
     public ArrayList<String> PrimeRef;
     public ArrayList<String> SecRef;
     public ArrayList<String> Repeats;
-    public String outputpath;
+
     public String log;
-    PrimaryParsing(ArrayList<String> RawReferences, String outpath)
+    PrimaryParsing(ArrayList<String> RawReferences)
     {
 
-        outputpath = outpath;
+
         PrimeRef = new ArrayList<>();
         Repeats = new ArrayList<>();
         for (String x : RawReferences)
@@ -176,7 +177,7 @@ public class PrimaryParsing
     {
 
         int i = 0;
-        OutputExcel output = new OutputExcel(outputpath);
+        //OutputExcel output = new OutputExcel(outputpath);
         Document doc = new Document("");
 
         for(String secondUrl : SecRef)
@@ -225,7 +226,7 @@ public class PrimaryParsing
                             Repeats.add(m.group());
 
                             System.out.println(m.group()); //тут будет сохранение в эксель
-                            output.SaveData(secondUrl, kw, m.group());
+                            OutputExcel.SaveData(secondUrl, kw, m.group());
                         }
                     }
             }
@@ -233,12 +234,18 @@ public class PrimaryParsing
             System.out.println("Пройдено "+ i +" из "+ SecRef.size());
             Controller.ShowConsole("Пройдено "+ i +" из "+ SecRef.size());
             Controller.percent = 1.0f*i/SecRef.size();
-            System.out.println("Кол-во найденных результатов: " + output.counter);
-            Controller.ShowConsole("Кол-во найденных результатов: " + output.counter);
+            System.out.println("Кол-во найденных результатов: " + OutputExcel.counter);
+            Controller.ShowConsole("Кол-во найденных результатов: " + OutputExcel.counter);
 
         }
 
-        output.SaveAndExit();
+        OutputExcel.SaveAndExit();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Принудительное завершение");
+        alert.setHeaderText("Поиск не закончен");
+        alert.setContentText("Результаты поиска сохранены в "+ Controller.adress2);
+        alert.showAndWait();
+        System.exit(0);
 
 
 

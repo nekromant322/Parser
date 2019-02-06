@@ -11,23 +11,23 @@ import java.io.IOException;
 public class OutputExcel
 {
 
-    private XSSFWorkbook book;
-    public int counter;
-    private Sheet sheet;
-    FileOutputStream fs;
-    String filename;
+    public static XSSFWorkbook book = new XSSFWorkbook();
+    public static int counter = 0;
+    private static Sheet sheet = book.createSheet("Результат парсинга");;
+
+    public static String filename;
     OutputExcel(String fn) throws FileNotFoundException
     {
 
         filename = fn;
-            book = new XSSFWorkbook();
+
             sheet = book.createSheet("Результат парсинга");
             counter = 0;
 
 
 
     }
-   void SaveData(String url, String kw, String text) throws IOException
+   public static void SaveData(String url, String kw, String text) throws IOException
    {
         Row row = sheet.createRow(counter);
 
@@ -43,7 +43,7 @@ public class OutputExcel
 
         sheet.autoSizeColumn(1);
         sheet.autoSizeColumn(2);
-        this.counter++;
+        counter++;
        /* if(counter ==10 )
         {
             this.SaveAndExit();
@@ -51,21 +51,21 @@ public class OutputExcel
     }
     @SuppressWarnings("deprecation")
 
-   void SaveAndExit() throws IOException
+   public static void SaveAndExit() throws IOException
     {
 
 
-            fs = new FileOutputStream(filename);
+            FileOutputStream fs = new FileOutputStream(filename);
             book.write(fs); //запись изменений в файл
             book.close();
-            System.exit(0);
+            //System.exit(0);
 
     }
-    void Save() throws IOException
+   /* public static void Save() throws IOException
     {
         fs = new FileOutputStream(filename);
         book.write(fs); //запись изменений в файл
-    }
+    }*/
 
 
 }

@@ -55,7 +55,7 @@ public class Controller
                         Log_Text.positionCaret( Log_Text.getText().length());
                         Log_Text.setEditable(true);
                         Log_Text.setScrollTop(Double.MAX_VALUE);
-                        Log = Log + Pb.getProgress() + "\n";
+                       // Log = Log + Pb.getProgress() + "\n";
                         Pb.setProgress(percent);
 
 
@@ -94,7 +94,7 @@ public class Controller
 
 
             InputExcel input = new  InputExcel(adress1);
-            PrimaryParsing pp = new PrimaryParsing(input.PrimaryRef,adress2);
+            PrimaryParsing pp = new PrimaryParsing(input.PrimaryRef);
 
 
 
@@ -154,7 +154,7 @@ public class Controller
                 }
 
                 adress2 = adress2.substring(0, pos) ;
-
+                OutputExcel.filename = adress2 + "\\ParserResult.xlsx";
                 FindButt.setDisable(false);
             }
             catch (Exception e)
@@ -165,20 +165,48 @@ public class Controller
 
         }
         @FXML
-        public void StopAll() throws InterruptedException
+        public void StopAll() throws InterruptedException, IOException
         {
             Log= Log + "Результат сохранен в " + adress2 + "\nРабота программы завершена принудительно\n";
+            try
+            {
+                OutputExcel.SaveAndExit();
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Принудительное завершение");
+                alert.setHeaderText("Поиск не закончен");
+                alert.setContentText("Результаты поиска сохранены в " + adress2);
 
 
+                alert.showAndWait();
+                System.exit(0);
+            }
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Принудительное завершение");
             alert.setHeaderText("Поиск не закончен");
-            alert.setContentText("Результаты поиска сохранены в "+ adress2);
+            alert.setContentText("Результаты поиска сохранены в " + adress2);
+
+
             alert.showAndWait();
+
 
             System.exit(0);
         }
 
+    @FXML
+    public void LearnAbout()
+    {
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Информация");
+                alert.setHeaderText("Для получения полного списка результатов лучше дождаться окончания поиска");
+                alert.setContentText("Исходные данные должны быть помещены в файл .xlsx\nНа первом листа в левом столбце список ссылок\nНа втором листе в левом столбцы список ключевых слов и фраз");
+                alert.showAndWait();
+
+    }
 
 
 

@@ -58,7 +58,7 @@ class Test
         String inputpath = "C:\\MyFiles\\Программирование\\Java\\test.xlsx";
         String outputpath = "C:\\MyFiles\\Программирование\\Java";
         InputExcel input = new  InputExcel(inputpath);
-       PrimaryParsing pp = new PrimaryParsing(input.PrimaryRef,outputpath);
+       PrimaryParsing pp = new PrimaryParsing(input.PrimaryRef);
         pp.SearchSecRef();
         pp.ShowLists();
 
