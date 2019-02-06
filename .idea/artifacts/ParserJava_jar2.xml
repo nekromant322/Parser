@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact name="ParserJava:jar2">
+    <output-path>$PROJECT_DIR$/out/artifacts/ParserJava_jar2</output-path>
+    <root id="root">
+      <element id="archive" name="ParserJava.jar">
+        <element id="module-output" name="ParserJava" />
+      </element>
+      <element id="library" level="project" name="org.jsoup:jsoup:1.11.3" />
+      <element id="library" level="project" name="org.apache.poi:poi-examples:4.0.0" />
+    </root>
+  </artifact>
+</component>

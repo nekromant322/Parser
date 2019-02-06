@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Class-Path: jsoup-1.11.3.jar poi-examples-4.0.0.jar poi-4.0.0.jar comm
+ ons-codec-1.10.jar commons-collections4-4.2.jar poi-scratchpad-4.0.0.
+ jar poi-ooxml-4.0.0.jar poi-ooxml-schemas-4.0.0.jar xmlbeans-3.0.1.ja
+ r commons-compress-1.18.jar curvesapi-1.04.jar
+Main-Class: Main
+
