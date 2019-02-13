@@ -17,6 +17,7 @@ public class PrimaryParsing
 {
     public ArrayList<String> PrimeRef;
     public ArrayList<String> SecRef;
+    public ArrayList<String> SecPreRef;
     public ArrayList<String> Repeats;
 
     public String log;
@@ -127,6 +128,10 @@ public class PrimaryParsing
             }
 
         }
+
+
+
+
         for(int i = 0 ; i < SecRef.size();i++)  //подтираем ненужные с ресурсами
         {
 
@@ -154,6 +159,17 @@ public class PrimaryParsing
                 e.printStackTrace();
             }
         }
+
+
+
+
+
+
+
+
+
+
+
        /* FileOutputStream of = new FileOutputStream("C:\\MyFiles\\Программирование\\Java\\2nd_urls.txt");
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(of));
         for(int i = 0 ; i < SecRef.size();i++)  //подтираем ненужные с ресурсами
