@@ -140,7 +140,7 @@ public class PrimaryParsing
             try
             {
 
-                if(x.contains("linkedin.com") || x.contains("twitter") || x.contains("vk.com") || x.contains("facebook") || x.contains("css") || x.contains(".js") || x.contains(".ico") || x.contains(".png") || x.contains(".xml") || x.contains(".svg"))
+                if(x.contains("yandex") || x.contains("telegram") ||x.contains("linkedin.com") || x.contains("twitter") || x.contains("vk.com") || x.contains("facebook") || x.contains("css") || x.contains(".js") || x.contains(".ico") || x.contains(".png") || x.contains(".xml") || x.contains(".svg"))
                 {
                     SecRef.remove(i);
                     i--;
