@@ -227,15 +227,58 @@ public class PrimaryParsing
             String textHTML = ht.NormalText;
             */
             String textHTML = doc.html();
+
             for(String kw : Kw)
             {
-               // System.out.println("поиск по слову " + kw);
-                Pattern p = Pattern.compile("(?i)[\\w\\d\\s\\-\\ă\\Ă\\Î\\î\\ş\\Ş\\ţ\\Ţ\\ș\\Ș\\ț\\Ț\\Â\\â\\'\\,]* ?"+kw+ " ?.*?(?=\\.|\\<|\\!|\\?|\\n|\\t|$|\")");
+                String[] words;
+                String delimeter = " "; // Разделитель
+                words = kw.split(delimeter); // Разделения строки str с помощью метода split()
+                for(int k = 0 ; k < words.length - 1 ; k++)
+                {
+                    for(int j = 0 ; j < words.length - 1 ; j++)
+                    {
 
+                        if( words[j].length() < words[j+1].length() )
+                        {
+                            String tmp = words[j];
+                            words[j] = words[j + 1];
+                            words[j + 1] = tmp;
+                        }
+                     }
+                 }
+
+                for(int k = 0 ; k < words.length ; k++ )
+                {
+                    if(words[k].length() > 8)
+                    {
+
+                        words[k] = words[k].substring(0,words[k].length() - 4) + words[k].charAt(words[k].length() - 3) + "?" + words[k].charAt(words[k].length() - 2) + "?"+ words[k].charAt(words[k].length() - 1) + "?";
+                    }
+                    else if(words[k].length() > 4)
+                    {
+
+                        words[k] = words[k].substring(0,words[k].length() - 3) + words[k].charAt(words[k].length() - 2) + "?" + words[k].charAt(words[k].length() - 1) + "?";
+                    }
+                    else
+                    {
+                        words[k] = words[k] + "?";
+                    }
+                    // System.out.println("поиск по слову " + kw);
+                    Pattern p = Pattern.compile("(?i)[\\w\\d\\s\\-\\ă\\Ă\\Î\\î\\ş\\Ş\\ţ\\Ţ\\ș\\Ș\\ț\\Ț\\Â\\â\\'\\,]* ?" + kw + " ?.*?(?=\\.|\\<|\\!|\\?|\\n|\\t|$|\")");
 
 
                     Matcher m = p.matcher(textHTML);
-                    while( m.find())
+                    m.find();
+                    if( m.group().length() != 0)
+                    {
+                        textHTML = m.group();
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    /* это предыдущий код, который я откуда-то скопипастил, видимо ищет много совпадений
+                    while (m.find())
                     {
                         if (!Repeats.contains(m.group()))
                         {
@@ -245,6 +288,12 @@ public class PrimaryParsing
                             OutputExcel.SaveData(secondUrl, kw, m.group());
                         }
                     }
+                    */
+                }
+                if(textHTML.length() != 0)
+                {
+                    OutputExcel.SaveData(secondUrl, kw, textHTML);
+                }
             }
             i++;
             System.out.println("Пройдено "+ i +" из "+ SecRef.size());
