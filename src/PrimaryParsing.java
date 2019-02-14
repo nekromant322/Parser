@@ -246,7 +246,7 @@ public class PrimaryParsing
                         }
                      }
                  }
-
+                Controller.ShowConsole("Изначальная фраза:" + kw);
                 for(int k = 0 ; k < words.length ; k++ )
                 {
                     if(words[k].length() > 8)
@@ -259,22 +259,26 @@ public class PrimaryParsing
 
                         words[k] = words[k].substring(0,words[k].length() - 3) + words[k].charAt(words[k].length() - 2) + "?" + words[k].charAt(words[k].length() - 1) + "?";
                     }
-                    else
+                    else if(words[k].length() == 4)
                     {
                         words[k] = words[k] + "?";
                     }
+                    Controller.ShowConsole("Преобразование в часть регулярки:" + words[k]);
                     // System.out.println("поиск по слову " + kw);
-                    Pattern p = Pattern.compile("(?i)[\\w\\d\\s\\-\\ă\\Ă\\Î\\î\\ş\\Ş\\ţ\\Ţ\\ș\\Ș\\ț\\Ț\\Â\\â\\'\\,]* ?" + kw + " ?.*?(?=\\.|\\<|\\!|\\?|\\n|\\t|$|\")");
+                    Pattern p = Pattern.compile("(?i)[\\w\\d\\s\\-\\ă\\Ă\\Î\\î\\ş\\Ş\\ţ\\Ţ\\ș\\Ș\\ț\\Ț\\Â\\â\\'\\,]* ?" + words[k] + " ?.*?(?=\\.|\\<|\\!|\\?|\\n|\\t|$|\")");
 
-
+                    Controller.ShowConsole("Поиск по регулярному выражению");
                     Matcher m = p.matcher(textHTML);
-                    m.find();
-                    if( m.group().length() != 0)
+
+                    Controller.ShowConsole("Поиск по регулярному выражению#2");
+                    if(  m.find() == true )
                     {
                         textHTML = m.group();
+                        Controller.ShowConsole("Поиск по регулярному выражению#3");
                     }
                     else
                     {
+                        textHTML = "";
                         break;
                     }
                     /* это предыдущий код, который я откуда-то скопипастил, видимо ищет много совпадений
