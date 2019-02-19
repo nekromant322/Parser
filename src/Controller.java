@@ -17,7 +17,8 @@ public class Controller
     public static String adress1;
     public static String adress2;
     public static String Log = "";
-    public static double percent ;
+    public static double percent = 0;
+    public static double timing = 0;
 
         @FXML
         private Button FindButt;
@@ -26,7 +27,8 @@ public class Controller
         @FXML
         private TextArea Input_path;
 
-
+        @FXML
+        private TextArea waiting_time;
 
         @FXML
         final private ProgressBar Pb  = new ProgressBar(0);
@@ -53,8 +55,9 @@ public class Controller
                         Log_Text.setEditable(true);
                         Log_Text.setScrollTop(Double.MAX_VALUE);
                        // Log = Log + Pb.getProgress() + "\n";
-                        Pb.setProgress(percent);
-
+                        //Pb.setProgress(percent);
+                        Pb.setProgress(30);
+                        waiting_time.setText(Double.toString((timing/1000.0*60.0)) );
 
 
 

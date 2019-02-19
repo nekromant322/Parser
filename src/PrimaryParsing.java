@@ -9,6 +9,7 @@ import java.io.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -84,6 +85,7 @@ public class PrimaryParsing
     void SearchSecRef() throws IOException
     {
 
+        Controller.ShowConsole("Формирование списка ссылок для поиска, и обработка ключевых слов...");
         Document doc = new Document("");
         SecRef = new ArrayList<>();
 
@@ -140,7 +142,7 @@ public class PrimaryParsing
             try
             {
 
-                if(x.contains("yandex") || x.contains("telegram") ||x.contains("linkedin.com") || x.contains("twitter") || x.contains("vk.com") || x.contains("facebook") || x.contains("css") || x.contains(".js") || x.contains(".ico") || x.contains(".png") || x.contains(".xml") || x.contains(".svg"))
+                if(x.contains(".jpg") || x.contains("yandex") || x.contains("telegram") ||x.contains("linkedin.com") || x.contains("twitter") || x.contains("vk.com") || x.contains("facebook") || x.contains("css") || x.contains(".js") || x.contains(".ico") || x.contains(".png") || x.contains(".xml") || x.contains(".svg"))
                 {
                     SecRef.remove(i);
                     i--;
@@ -195,10 +197,16 @@ public class PrimaryParsing
         int i = 0;
         //OutputExcel output = new OutputExcel(outputpath);
         Document doc = new Document("");
+        long startTime;
+        long curTime = System.currentTimeMillis();
+        long timing = 0;
+        long sum = 0;
 
         for(String secondUrl : SecRef)
         {
-            System.out.println("поиск по ссылке " + secondUrl);
+            startTime = curTime;
+
+            //System.out.println("поиск по ссылке " + secondUrl);
             Controller.ShowConsole("Поиск по ссылке " + secondUrl);
            // log = log + "поиск по ссылке " + secondUrl +  "\n";
             try
@@ -228,6 +236,7 @@ public class PrimaryParsing
             */
             String textHTML = doc.html();
 
+
             for(String kw : Kw)
             {
                 String[] words;
@@ -246,39 +255,55 @@ public class PrimaryParsing
                         }
                      }
                  }
-                Controller.ShowConsole("Изначальная фраза:" + kw);
+                //System.out.println("Ключевая фраза по словам");
+                /*for(int k = 0 ; k < words.length ; k++)
+                {
+                    System.out.println(words[k]);
+                }*/
+                //Controller.ShowConsole("Изначальная фраза:" + kw);
                 for(int k = 0 ; k < words.length ; k++ )
                 {
                     if(words[k].length() > 8)
                     {
 
-                        words[k] = words[k].substring(0,words[k].length() - 4) + words[k].charAt(words[k].length() - 3) + "?" + words[k].charAt(words[k].length() - 2) + "?"+ words[k].charAt(words[k].length() - 1) + "?";
+                        char second =  words[k].charAt(words[k].length() - 2);
+                        char first =  words[k].charAt(words[k].length() - 1);
+                        words[k] = words[k].substring(0,words[k].length() - 2) +  "?" + second + "?"+ first + "?";
                     }
                     else if(words[k].length() > 4)
                     {
 
-                        words[k] = words[k].substring(0,words[k].length() - 3) + words[k].charAt(words[k].length() - 2) + "?" + words[k].charAt(words[k].length() - 1) + "?";
+                        char first =  words[k].charAt(words[k].length() - 1);
+                        words[k] = words[k].substring(0,words[k].length() - 1) +  "?" + first + "?";
+
                     }
                     else if(words[k].length() == 4)
                     {
                         words[k] = words[k] + "?";
                     }
-                    Controller.ShowConsole("Преобразование в часть регулярки:" + words[k]);
-                    // System.out.println("поиск по слову " + kw);
-                    Pattern p = Pattern.compile("(?i)[\\w\\d\\s\\-\\ă\\Ă\\Î\\î\\ş\\Ş\\ţ\\Ţ\\ș\\Ș\\ț\\Ț\\Â\\â\\'\\,]* ?" + words[k] + " ?.*?(?=\\.|\\<|\\!|\\?|\\n|\\t|$|\")");
-
-                    Controller.ShowConsole("Поиск по регулярному выражению");
+                    //System.out.println("Преобразование в часть регулярки:" + words[k]);
+                    //System.out.println("поиск по слову " + kw);
+                    Pattern p = Pattern.compile("(?i)[\\w\\d\\s\\-\\p{L}\\'\\,]* ?" + words[k] + ".*?(?=\\.|\\<|\\!|\\?|\\n|\\t|$|\")");
+                    //KeyWord.*?(?=\.|\<|\!|\?|\n|\t|$)
+                    //Controller.ShowConsole("Поиск по регулярному выражению");
                     Matcher m = p.matcher(textHTML);
 
-                    Controller.ShowConsole("Поиск по регулярному выражению#2");
-                    if(  m.find() == true )
+                    //Controller.ShowConsole("Поиск по регулярному выражению#2");
+                    /* TO DO
+                    ПОИСК нескольких предложений, а не одного
+                    */
+
+                    if(m.find() == true)
                     {
                         textHTML = m.group();
-                        Controller.ShowConsole("Поиск по регулярному выражению#3");
+                        //Controller.ShowConsole("Поиск по регулярному выражению#3");
+                        //System.out.println("Найдено одно из слов: " + words[k]);
+                        //System.out.println("Полученный фрагмент:  " + textHTML);
                     }
                     else
                     {
-                        textHTML = "";
+                        textHTML = "none";
+
                         break;
                     }
                     /* это предыдущий код, который я откуда-то скопипастил, видимо ищет много совпадений
@@ -294,17 +319,24 @@ public class PrimaryParsing
                     }
                     */
                 }
-                if(textHTML.length() != 0)
+                if(!textHTML.equals("none"))
                 {
                     OutputExcel.SaveData(secondUrl, kw, textHTML);
                 }
             }
             i++;
-            System.out.println("Пройдено "+ i +" из "+ SecRef.size());
+            //System.out.println("Пройдено "+ i +" из "+ SecRef.size());
             Controller.ShowConsole("Пройдено "+ i +" из "+ SecRef.size());
             Controller.percent = 1.0f*i/SecRef.size();
-            System.out.println("Кол-во найденных результатов: " + OutputExcel.counter);
+
+            //System.out.println("Кол-во найденных результатов: " + OutputExcel.counter);
             Controller.ShowConsole("Кол-во найденных результатов: " + OutputExcel.counter);
+            curTime = System.currentTimeMillis();
+
+            timing = (int) (curTime - startTime);
+            sum +=timing;
+            Controller.timing = (double) sum/i * SecRef.size();
+            Controller.ShowConsole("Среднее время для одной ссылки:" + Controller.timing);
 
         }
 
