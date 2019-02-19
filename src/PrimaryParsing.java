@@ -334,8 +334,15 @@ public class PrimaryParsing
             curTime = System.currentTimeMillis();
 
             timing = (int) (curTime - startTime);
-            sum +=timing;
-            Controller.timing = (double) sum/i * SecRef.size();
+            if(timing > 3000)
+            {
+               sum += sum/i;
+            }
+            else
+            {
+                sum += timing;
+            }
+            Controller.timing = (double) (sum * (SecRef.size() - i)/i)/1000.0/60.0;
             Controller.ShowConsole("Среднее время для одной ссылки:" + Controller.timing);
 
         }

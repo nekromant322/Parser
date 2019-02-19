@@ -57,7 +57,17 @@ public class Controller
                        // Log = Log + Pb.getProgress() + "\n";
                         //Pb.setProgress(percent);
                         Pb.setProgress(30);
-                        waiting_time.setText(Double.toString((timing/1000.0*60.0)) );
+
+                        String timer_message = "Осталось ";
+                        if(timing < 60)
+                        {
+                            timer_message += Integer.toString((int)timing) + " минут";
+                        }
+                        else
+                        {
+                            timer_message += Integer.toString(((int)timing)%60 )+ " часов";
+                        }
+                        waiting_time.setText(timer_message);
 
 
 
