@@ -6,7 +6,8 @@ public class HtmlToEnglish
     public String NormalText = "";
 
     HtmlToEnglish(String htmltext)
-    { System.out.println("Начало обработки");
+    {
+
        Map<String,String> map = new HashMap<String,String>();
 
 
@@ -119,9 +120,9 @@ public class HtmlToEnglish
 
 
         }
-        System.out.println("Конец обработки");
+
         NormalText =  NormalText.toLowerCase();
-        System.out.println("Переведено в нижний");
+       
 
     }
 

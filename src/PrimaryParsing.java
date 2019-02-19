@@ -7,10 +7,9 @@ import org.jsoup.select.Elements;
 
 import java.io.*;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,7 +21,8 @@ public class PrimaryParsing
     public ArrayList<String> Repeats;
 
     public String log;
-    PrimaryParsing(ArrayList<String> RawReferences)
+    private FileInputStream fs;
+    PrimaryParsing(ArrayList<String> RawReferences) throws FileNotFoundException
     {
 
 
@@ -89,7 +89,7 @@ public class PrimaryParsing
         Document doc = new Document("");
         SecRef = new ArrayList<>();
 
-        for(String x : PrimeRef)
+        for (String x : PrimeRef)
         {
             try
             {
@@ -100,29 +100,27 @@ public class PrimaryParsing
                 System.err.println("Ошибка при подключении к " + x + " , запрос отклонен");
                 Controller.ShowConsole("Ошибка при подключении к " + x + " ,запрос отклонен");
             }
-            catch(IllegalArgumentException e)
+            catch (IllegalArgumentException e)
             {
                 System.err.println("Неверная ссылка " + x + " ,запрос отклонен");
                 Controller.ShowConsole("Неверная ссылка " + x + " ,запрос отклонен");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.printStackTrace();
             }
 
 
-
-
             Elements urls = doc.getElementsByTag("a");
 
-            for(Element url : urls)
+            for (Element url : urls)
             {
                 //... и вытаскиваем их название...
                 //System.out.println("\nhref  <a> "+url.absUrl("href"));
                 SecRef.add(url.absUrl("href"));
             }
-           Elements urls1 = doc.getElementsByTag("link");
-            for(Element url : urls1)
+            Elements urls1 = doc.getElementsByTag("link");
+            for (Element url : urls1)
             {
                 //... и вытаскиваем их название...
                 //System.out.println("\nhref  <link> "+url.absUrl("href"));
@@ -132,13 +130,27 @@ public class PrimaryParsing
         }
 
 
-
+        ArrayList<String> Bad = new ArrayList<>();
+        Scanner sc = new Scanner(new File("BadURL.txt"));
+        while (sc.hasNext())
+        {
+            String URL = sc.nextLine();
+            Repeats.add(URL);
+        }
 
         for(int i = 0 ; i < SecRef.size();i++)  //подтираем ненужные с ресурсами
         {
 
             String x = SecRef.get(i);
-
+            for(String m : Bad)
+            {
+                if(x.equals(m))
+                {
+                    SecRef.remove(i);
+                    i--;
+                    break;
+                }
+            }
             try
             {
 
@@ -206,6 +218,9 @@ public class PrimaryParsing
         {
             startTime = curTime;
 
+
+
+
             //System.out.println("поиск по ссылке " + secondUrl);
             Controller.ShowConsole("Поиск по ссылке " + secondUrl);
            // log = log + "поиск по ссылке " + secondUrl +  "\n";
@@ -219,11 +234,23 @@ public class PrimaryParsing
                 System.err.println("Битая ссылка:" + secondUrl);
                 Controller.ShowConsole("Битая ссылка:" + secondUrl);
 
+
+                FileWriter writer = new FileWriter("BadURL.txt", true);
+                BufferedWriter bufferWriter = new BufferedWriter(writer);
+                bufferWriter.write(secondUrl + "\n");
+                bufferWriter.close();
+
             }
             catch (IOException e)
             {
                 System.err.println("Ошибка при подключении к " + secondUrl + " ,запрос отклонен");
                 Controller.ShowConsole("Ошибка при подключении к " + secondUrl + " ,запрос отклонен");
+
+
+                FileWriter writer = new FileWriter("BadURL.txt", true);
+                BufferedWriter bufferWriter = new BufferedWriter(writer);
+                bufferWriter.write(secondUrl + "\n");
+                bufferWriter.close();
             }
             catch (Exception e)
             {
