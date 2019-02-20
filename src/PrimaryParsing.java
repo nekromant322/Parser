@@ -319,7 +319,10 @@ public class PrimaryParsing
                     /* TO DO
                     ПОИСК нескольких предложений, а не одного
                     */
-
+                    if( k >(words.length )/2 + 1 && words.length > 2 )
+                    {
+                        break;
+                    }
                     if(m.find() == true)
                     {
                         textHTML = m.group();
@@ -370,7 +373,7 @@ public class PrimaryParsing
                 sum += timing;
             }
             Controller.timing = (double) (sum * (SecRef.size() - i)/i)/1000.0/60.0;
-            Controller.ShowConsole("Среднее время для одной ссылки:" + Controller.timing);
+            //Controller.ShowConsole("Среднее время для одной ссылки:" + Controller.timing);
 
         }
 
