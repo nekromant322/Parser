@@ -122,7 +122,7 @@ public class HtmlToEnglish
         }
 
         NormalText =  NormalText.toLowerCase();
-       
+
 
     }
 

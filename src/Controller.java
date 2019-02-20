@@ -54,7 +54,7 @@ public class Controller
                         Log_Text.positionCaret( Log_Text.getText().length());
                         Log_Text.setEditable(true);
                         Log_Text.setScrollTop(Double.MAX_VALUE);
-                        if(Log.length() > 3000)
+                        if(Log.length() > 10000)
                         {
                             Log = "";
                         }
@@ -65,11 +65,11 @@ public class Controller
                         String timer_message = "Осталось ";
                         if(timing < 60)
                         {
-                            timer_message += Integer.toString((int)timing) + " минут";
+                            timer_message +="00:" + Integer.toString((int)timing);
                         }
                         else
                         {
-                            timer_message += Integer.toString(((int)timing)%60 )+ " часов";
+                            timer_message += Integer.toString(((int)timing)/60 )+ ":" + Integer.toString(((int)timing)%60 );
                         }
                         waiting_time.setText(timer_message);
 
