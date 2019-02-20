@@ -14,6 +14,7 @@ import java.io.IOException;
 public class Controller
 {
 
+
     public static String adress1;
     public static String adress2;
     public static String Log = "";
@@ -65,11 +66,25 @@ public class Controller
                         String timer_message = "Осталось ";
                         if(timing < 60)
                         {
-                            timer_message +="00:" + Integer.toString((int)timing);
+                            if(timing < 10)
+                            {
+                                timer_message +="00:" +"0"+ Integer.toString((int)timing);
+                            }
+                            else
+                            {
+                                timer_message += "00:" + Integer.toString((int) timing);
+                            }
                         }
                         else
                         {
-                            timer_message += Integer.toString(((int)timing)/60 )+ ":" + Integer.toString(((int)timing)%60 );
+                            if(timing%60 < 10)
+                            {
+                                timer_message += Integer.toString(((int)timing)/60 )+ ":" +"0"+ Integer.toString(((int)timing)%60 );
+                            }
+                            else
+                            {
+                                timer_message += Integer.toString(((int) timing) / 60) + ":" + Integer.toString(((int) timing) % 60);
+                            }
                         }
                         waiting_time.setText(timer_message);
 

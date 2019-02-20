@@ -673,3 +673,6 @@ https://www4.smartadserver.com/ac?jump=1&nwid=674&siteid=37764&pgname=home-fake/
 http://www.windowsphone.com/en-in/store/app/bzi-ro/bd5fa4b1-d05d-4405-ba45-22e11798df78
 http://rfm.rtv.net/index.php/component/content/article/78-rfm-info/77-live?tmpl=component
 http://edwinkeleti.ro/blog/item/147-cand-leul-ia-taurul-de-coarne-indesert
+https://habr.com/site.webmanifest
+https://download.ip2location.com/lite/IP2LOCATION-LITE-DB1.CSV.ZIP
+https://habrastorage.org/webt/hd/_x/i0/hd_xi0-n8_624hokpbszp1wm2ku.jpeg
