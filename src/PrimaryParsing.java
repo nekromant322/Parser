@@ -335,6 +335,12 @@ public class PrimaryParsing
 
                     if (found > words.length / 2 )
                     {
+                        int count_ = 0;
+                        for(int m = 0 ; m < textHTML.length();m++)
+                        {
+                            if(textHTML.charAt(m) == '-' || textHTML.charAt(m) == '/') count_++;
+                        }
+                        if(count_ < 5)
                         OutputExcel.SaveData(secondUrl, kw, textHTML);
                     }
                 }

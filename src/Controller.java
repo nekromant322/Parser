@@ -55,10 +55,11 @@ public class Controller
                         Log_Text.positionCaret( Log_Text.getText().length());
                         Log_Text.setEditable(true);
                         Log_Text.setScrollTop(Double.MAX_VALUE);
-                       /* if(Log.length() > 10000)
+                        if(Log.length() > 15000)
                         {
                             Log = "";
-                        }*/
+                            Log_Text.appendText("");
+                        }
                        // Log = Log + Pb.getProgress() + "\n";
                         //Pb.setProgress(percent);
                         Pb.setProgress(30);
