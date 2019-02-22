@@ -154,7 +154,7 @@ public class PrimaryParsing
             try
             {
 
-                if(x.contains(".jpg") || x.contains("yandex") || x.contains("telegram") ||x.contains("linkedin.com") || x.contains("twitter") || x.contains("vk.com") || x.contains("facebook") || x.contains("css") || x.contains(".js") || x.contains(".ico") || x.contains(".png") || x.contains(".xml") || x.contains(".svg"))
+                if(x.contains("youtube") || x.contains("mailto:") || x.contains(".jpg") || x.contains("yandex") || x.contains("telegram") ||x.contains("linkedin.com") || x.contains("twitter") || x.contains("vk.com") || x.contains("facebook") || x.contains("css") || x.contains(".js") || x.contains(".ico") || x.contains(".png") || x.contains(".xml") || x.contains(".svg"))
                 {
                     SecRef.remove(i);
                     i--;
@@ -269,91 +269,82 @@ public class PrimaryParsing
                 String[] words;
                 String delimeter = " "; // Разделитель
                 words = kw.split(delimeter); // Разделения строки str с помощью метода split()
-                for(int k = 0 ; k < words.length - 1 ; k++)
+                for (int k = 0; k < words.length - 1; k++)
                 {
-                    for(int j = 0 ; j < words.length - 1 ; j++)
+                    for (int j = 0; j < words.length - 1; j++)
                     {
 
-                        if( words[j].length() < words[j+1].length() )
+                        if (words[j].length() < words[j + 1].length())
                         {
                             String tmp = words[j];
                             words[j] = words[j + 1];
                             words[j + 1] = tmp;
                         }
-                     }
-                 }
+                    }
+                }
                 //System.out.println("Ключевая фраза по словам");
                 /*for(int k = 0 ; k < words.length ; k++)
                 {
                     System.out.println(words[k]);
                 }*/
                 //Controller.ShowConsole("Изначальная фраза:" + kw);
-                for(int k = 0 ; k < words.length ; k++ )
+                try
                 {
-                    if(words[k].length() > 8)
+                    int found = 0;
+                    for (int k = 0; k < words.length; k++)
                     {
+                        if (words[k].length() > 8)
+                        {
 
-                        char second =  words[k].charAt(words[k].length() - 2);
-                        char first =  words[k].charAt(words[k].length() - 1);
-                        words[k] = words[k].substring(0,words[k].length() - 2) +  "?" + second + "?"+ first + "?";
-                    }
-                    else if(words[k].length() > 4)
-                    {
+                            char second = words[k].charAt(words[k].length() - 2);
+                            char first = words[k].charAt(words[k].length() - 1);
+                            words[k] = words[k].substring(0, words[k].length() - 2) + "?" + second + "?" + first + "?";
+                        } else if (words[k].length() > 4)
+                        {
 
-                        char first =  words[k].charAt(words[k].length() - 1);
-                        words[k] = words[k].substring(0,words[k].length() - 1) +  "?" + first + "?";
+                            char first = words[k].charAt(words[k].length() - 1);
+                            words[k] = words[k].substring(0, words[k].length() - 1) + "?" + first + "?";
 
-                    }
-                    else if(words[k].length() == 4)
-                    {
-                        words[k] = words[k] + "?";
-                    }
-                    //System.out.println("Преобразование в часть регулярки:" + words[k]);
-                    //System.out.println("поиск по слову " + kw);
-                    Pattern p = Pattern.compile("(?i)[\\w\\d\\s\\-\\p{L}\\'\\,]* ?" + words[k] + ".*?(?=\\.|\\<|\\!|\\?|\\n|\\t|$|\")");
-                    //KeyWord.*?(?=\.|\<|\!|\?|\n|\t|$)
-                    //Controller.ShowConsole("Поиск по регулярному выражению");
-                    Matcher m = p.matcher(textHTML);
+                        } else if (words[k].length() == 4)
+                        {
+                            words[k] = words[k] + "?";
+                        }
+                        //System.out.println("Преобразование в часть регулярки:" + words[k]);
+                        //System.out.println("поиск по слову " + kw);
+                        Pattern p = Pattern.compile("(?i)[\\w\\d\\s\\-\\p{L}\\'\\,]* ?" + words[k] + ".*?(?=\\.|\\<|\\!|\\?|\\n|\\t|$|\")");
+                        //KeyWord.*?(?=\.|\<|\!|\?|\n|\t|$)
+                        //Controller.ShowConsole("Поиск по регулярному выражению");
+                        Matcher m = p.matcher(textHTML);
 
-                    //Controller.ShowConsole("Поиск по регулярному выражению#2");
+                        //Controller.ShowConsole("Поиск по регулярному выражению#2");
                     /* TO DO
                     ПОИСК нескольких предложений, а не одного
                     */
-                    if( k >(words.length )/2 + 1 && words.length > 2 )
-                    {
-                        break;
-                    }
-                    if(m.find() == true)
-                    {
-                        textHTML = m.group();
-                        //Controller.ShowConsole("Поиск по регулярному выражению#3");
-                        //System.out.println("Найдено одно из слов: " + words[k]);
-                        //System.out.println("Полученный фрагмент:  " + textHTML);
-                    }
-                    else
-                    {
-                        textHTML = "none";
 
-                        break;
-                    }
-                    /* это предыдущий код, который я откуда-то скопипастил, видимо ищет много совпадений
-                    while (m.find())
-                    {
-                        if (!Repeats.contains(m.group()))
+                        if (m.find() == true)
                         {
-                            Repeats.add(m.group());
-
-                            System.out.println(m.group()); //тут будет сохранение в эксель
-                            OutputExcel.SaveData(secondUrl, kw, m.group());
+                            found++;
+                            textHTML = m.group();
+                            //Controller.ShowConsole("Поиск по регулярному выражению#3");
+                            //System.out.println("Найдено одно из слов: " + words[k]);
+                            //System.out.println("Полученный фрагмент:  " + textHTML);
                         }
+
+
                     }
-                    */
+
+                    if (found > words.length / 2 )
+                    {
+                        OutputExcel.SaveData(secondUrl, kw, textHTML);
+                    }
                 }
-                if(!textHTML.equals("none"))
+                catch (Exception e)
                 {
-                    OutputExcel.SaveData(secondUrl, kw, textHTML);
+                    System.err.println("Ошибка во время поиска по фразе на слове"  + kw);
                 }
             }
+
+
             i++;
             //System.out.println("Пройдено "+ i +" из "+ SecRef.size());
             Controller.ShowConsole("Пройдено "+ i +" из "+ SecRef.size());

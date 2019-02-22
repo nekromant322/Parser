@@ -49,7 +49,7 @@ public class Controller
 
                     while(true)
                     {
-
+                        //try ЗАКОНТРОЛИТЬ СТРАННОЕ ИСКЛЮЧЕНИЕ
                         Log_Text.setText(Log);
                         //Log_Text.appendText("");
                         Log_Text.positionCaret( Log_Text.getText().length());

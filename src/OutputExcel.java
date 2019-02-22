@@ -1,3 +1,4 @@
+import javafx.scene.control.Alert;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -53,12 +54,19 @@ public class OutputExcel
 
    public static void SaveAndExit() throws IOException
     {
+            if(counter != 0)
+            {
+                FileOutputStream fs = new FileOutputStream(filename);
+                book.write(fs); //запись изменений в файл
+                book.close();
+            }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Поиск закончен");
+            alert.setHeaderText("Кол-во результатов :" + counter);
+            alert.setContentText("Результаты поиска сохранены в "+ Controller.adress2);
 
-
-            FileOutputStream fs = new FileOutputStream(filename);
-            book.write(fs); //запись изменений в файл
-            book.close();
-            //System.exit(0);
+            //НЕ ЗАБЫТЬ ДОДЕЛАТЬ
+            System.exit(0);
 
     }
    /* public static void Save() throws IOException
