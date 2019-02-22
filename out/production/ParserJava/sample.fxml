@@ -17,7 +17,7 @@
       <Button fx:id="BrowseInputBut" layoutX="14.0" layoutY="30.0" mnemonicParsing="false" onAction="#ChooseInput" prefHeight="38.0" prefWidth="63.0" text=". . . " />
       <TextArea fx:id="Input_path" layoutX="95.0" layoutY="30.0" prefHeight="38.0" prefWidth="364.0" />
       <ProgressBar fx:id="Pb" layoutX="14.0" layoutY="222.0" prefHeight="18.0" prefWidth="575.0" />
-      <Button id="StopButton" fx:id="sStopBut" layoutX="478.0" layoutY="170.0" mnemonicParsing="false" onAction="#StopAll" prefHeight="38.0" prefWidth="88.0" style="-fx-background-color: #d32828;" text="Остановить" />
+      <Button id="StopButton" fx:id="StopBut" layoutX="478.0" layoutY="170.0" mnemonicParsing="false" onAction="#StopAll" prefHeight="38.0" prefWidth="88.0" style="-fx-background-color: #d32828;" text="Остановить" />
       <Button layoutX="371.0" layoutY="170.0" mnemonicParsing="false" onAction="#LearnAbout" prefHeight="38.0" prefWidth="88.0" style="-fx-background-color: #f7d56f;" text="Важно" />
       <TextArea fx:id="waiting_time" layoutX="14.0" layoutY="175.0" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="28.0" prefWidth="99.0" />
    </children>

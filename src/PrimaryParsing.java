@@ -374,7 +374,7 @@ public class PrimaryParsing
             //Controller.ShowConsole("Среднее время для одной ссылки:" + Controller.timing);
 
         }
-        Controller.StopBut.setDisable(true);
+        Controller.stop_enable = true;
         OutputExcel.SaveAndExit();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Принудительное завершение");

@@ -21,11 +21,14 @@ public class Controller
     public static String Log = "";
     public static double percent = 0;
     public static double timing = 0;
+    public static boolean stop_enable;
 
         @FXML
         private Button FindButt;
+
+
         @FXML
-        public static Button StopBut;
+        private Button StopBut;
         @FXML
         private TextArea Log_Text;
         @FXML
@@ -41,9 +44,9 @@ public class Controller
         void initialize()
         {
             Input_path.setDisable(true);
-
+            stop_enable = false;
             FindButt.setDisable(true);
-
+            StopBut.setDisable(false);;
             Task task_log = new Task<Void>()
             {
                 @Override
@@ -63,7 +66,10 @@ public class Controller
                             Log = "";
                             Log_Text.appendText("");
                         }
-
+                        if(!stop_enable)
+                        {
+                            StopBut.setDisable(stop_enable);;
+                        }
 
                         Platform.runLater(() -> Pb.setProgress(percent));
                         //Log+=percent+"\n";
