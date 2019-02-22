@@ -1,3 +1,4 @@
+import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -373,7 +374,7 @@ public class PrimaryParsing
             //Controller.ShowConsole("Среднее время для одной ссылки:" + Controller.timing);
 
         }
-
+        Controller.StopBut.setDisable(true);
         OutputExcel.SaveAndExit();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Принудительное завершение");

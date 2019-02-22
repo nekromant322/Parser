@@ -25,6 +25,8 @@ public class Controller
         @FXML
         private Button FindButt;
         @FXML
+        public static Button StopBut;
+        @FXML
         private TextArea Log_Text;
         @FXML
         private TextArea Input_path;
@@ -33,7 +35,7 @@ public class Controller
         private TextArea waiting_time;
 
         @FXML
-        final private ProgressBar Pb  = new ProgressBar(0);
+        private ProgressBar Pb  = new ProgressBar(0);
 
         @FXML
         void initialize()
@@ -64,7 +66,7 @@ public class Controller
 
 
                         Platform.runLater(() -> Pb.setProgress(percent));
-                        Log+=percent+"\n";
+                        //Log+=percent+"\n";
                         String timer_message = "Осталось ";
                         if(timing < 60)
                         {
