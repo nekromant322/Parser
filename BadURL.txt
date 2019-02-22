@@ -1628,3 +1628,6 @@ https://www4.smartadserver.com/call/pubjumpi/37764/258615/18206/S/[timestamp]/?
 https://jvj.ro/wp-json/
 http://www.accuweather.com/ro/ro/videle/285993/weather-forecast/285993
 https://www.craiovaforum.ro/images/cfvb4/logo/logo-print.psd
+https://fonts.googleapis.com
+https://www.instagram.com/
+https://www.trafic.ro/statistici/indiscret.ro

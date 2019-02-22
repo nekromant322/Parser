@@ -1,4 +1,5 @@
 
+import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
@@ -60,10 +61,10 @@ public class Controller
                             Log = "";
                             Log_Text.appendText("");
                         }
-                       // Log = Log + Pb.getProgress() + "\n";
-                        //Pb.setProgress(percent);
-                        //Pb.setProgress(percent);
-                        //Log+=percent+"\n";
+
+
+                        Platform.runLater(() -> Pb.setProgress(percent));
+                        Log+=percent+"\n";
                         String timer_message = "Осталось ";
                         if(timing < 60)
                         {
