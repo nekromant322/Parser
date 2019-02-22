@@ -62,8 +62,8 @@ public class Controller
                         }
                        // Log = Log + Pb.getProgress() + "\n";
                         //Pb.setProgress(percent);
-                        Pb.setProgress(30);
-
+                        //Pb.setProgress(percent);
+                        //Log+=percent+"\n";
                         String timer_message = "Осталось ";
                         if(timing < 60)
                         {
