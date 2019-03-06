@@ -204,7 +204,7 @@ public class PrimaryParsing
 
 
     }
-    void FinalParsing(ArrayList<String> Kw) throws IOException
+    void FinalParsing(ArrayList<String> Kw) throws IOException, InterruptedException
     {
 
         int i = 0;
@@ -334,7 +334,7 @@ public class PrimaryParsing
 
                     }
 
-                    if (found > words.length / 2 )
+                    if ((words.length  == 2 && found ==2)|| (words.length > 2 && found > words.length / 2 ))
                     {
                         int count_ = 0;
                         for(int m = 0 ; m < textHTML.length();m++)
@@ -375,6 +375,7 @@ public class PrimaryParsing
 
         }
         Controller.stop_enable = true;
+        Thread.sleep(501);
         OutputExcel.SaveAndExit();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Принудительное завершение");

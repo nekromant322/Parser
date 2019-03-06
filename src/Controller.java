@@ -140,7 +140,7 @@ public class Controller
             Task task = new Task<Void>()
             {
                 @Override
-                public Void call() throws IOException
+                public Void call() throws IOException, InterruptedException
                 {
                     pp.SearchSecRef();
                     pp.ShowLists();
@@ -153,6 +153,7 @@ public class Controller
 
 
         }
+
         public static void ShowConsole(String new_log)
         {
 
@@ -239,11 +240,11 @@ public class Controller
     public void LearnAbout()
     {
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Информация");
-                alert.setHeaderText("Для получения полного списка результатов лучше дождаться окончания поиска");
-                alert.setContentText("Исходные данные должны быть помещены в файл .xlsx\nНа первом листа в левом столбце список ссылок\nНа втором листе в левом столбцы список ключевых слов и фраз");
-                alert.showAndWait();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Информация");
+        alert.setHeaderText("Для получения полного списка результатов лучше дождаться окончания поиска");
+        alert.setContentText("Исходные данные должны быть помещены в файл .xlsx\nНа первом листа в левом столбце список ссылок\nНа втором листе в левом столбцы список ключевых слов и фраз");
+        alert.showAndWait();
 
     }
 
