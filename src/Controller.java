@@ -44,7 +44,7 @@ public class Controller
         void initialize()
         {
             Input_path.setDisable(true);
-            stop_enable = false;
+
             FindButt.setDisable(true);
             StopBut.setDisable(false);;
             Task task_log = new Task<Void>()
@@ -55,6 +55,7 @@ public class Controller
 
                     while(true)
                     {
+
                         //try ЗАКОНТРОЛИТЬ СТРАННОЕ ИСКЛЮЧЕНИЕ
                         Log_Text.setText(Log);
                         //Log_Text.appendText("");
@@ -66,10 +67,7 @@ public class Controller
                             Log = "";
                             Log_Text.appendText("");
                         }
-                        if(!stop_enable)
-                        {
-                            StopBut.setDisable(stop_enable);;
-                        }
+
 
                         Platform.runLater(() -> Pb.setProgress(percent));
                         //Log+=percent+"\n";
@@ -145,6 +143,13 @@ public class Controller
                     pp.SearchSecRef();
                     pp.ShowLists();
                     pp.FinalParsing(input.KeyWords);
+                    //System.exit(0);
+                    Controller.ShowConsole("Результаты поиска сохранены в "+ Controller.adress2);
+                    StopBut.setDisable(true);;
+                    OutputExcel.SaveAndExit();
+
+                
+                    System.exit(0);
                     return null;
                 }
             };
@@ -153,7 +158,14 @@ public class Controller
 
 
         }
-
+        public static void EndingInfo()
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Завершено");
+            alert.setHeaderText("Поиск не закончен");
+            alert.setContentText("Результаты поиска сохранены в "+ Controller.adress2);
+            alert.showAndWait();
+        }
         public static void ShowConsole(String new_log)
         {
 

@@ -7,31 +7,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74ef463e-c0f2-4b0a-9b5c-5d5663d862ee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/unnamed.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BadURL.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/BadURL.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ParserJava.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ParserJava.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ParserJava_jar/ParserJava.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ParserJava_jar/ParserJava.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ParserJava_jar/hs_err_pid27544.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ParserJava_jar/hs_err_pid28640.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ParserJava_jar/hs_err_pid28720.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ParserJava_jar2/ParserJava.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ParserJava_jar2/commons-codec-1.10.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ParserJava_jar2/commons-collections4-4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ParserJava_jar2/commons-compress-1.18.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ParserJava_jar2/curvesapi-1.04.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ParserJava_jar2/jsoup-1.11.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ParserJava_jar2/poi-4.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ParserJava_jar2/poi-examples-4.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ParserJava_jar2/poi-ooxml-4.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ParserJava_jar2/poi-ooxml-schemas-4.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ParserJava_jar2/poi-scratchpad-4.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ParserJava_jar2/xmlbeans-3.0.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/unnamed/unnamed.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParserJava/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ParserJava/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ParserJava/META-INF/ParserJava.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParserJava/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ParserJava/Controller$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParserJava/Controller$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ParserJava/Controller$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParserJava/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ParserJava/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParserJava/HtmlToEnglish.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ParserJava/HtmlToEnglish.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParserJava/InputExcel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ParserJava/InputExcel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParserJava/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ParserJava/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParserJava/OutputExcel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ParserJava/OutputExcel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ParserJava/PrimaryParsing.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ParserJava/PrimaryParsing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ParserJava/TestString.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ParserJava/TestString.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OutputExcel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OutputExcel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PrimaryParsing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PrimaryParsing.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -40,6 +31,10 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="autoscrollToSource" value="true" />
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -55,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="244" column="17" selection-start-line="244" selection-start-column="17" selection-end-line="244" selection-end-column="17" />
+            <state relative-caret-position="253">
+              <caret line="150" column="16" selection-start-line="150" selection-start-column="16" selection-end-line="150" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -70,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PrimaryParsing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="243" column="58" selection-start-line="243" selection-start-column="52" selection-end-line="243" selection-end-column="58" />
+            <state relative-caret-position="511">
+              <caret line="381" selection-start-line="381" selection-end-line="381" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -80,16 +75,11 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ParserJava.iml">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/artifacts/ParserJava_jar.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
@@ -118,8 +108,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/OutputExcel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
+            <state relative-caret-position="389">
+              <caret line="76" column="14" selection-start-line="76" selection-start-column="14" selection-end-line="76" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -193,10 +183,10 @@
         <option value="$PROJECT_DIR$/src/TestString.java" />
         <option value="$PROJECT_DIR$/src/HtmlToEnglish.java" />
         <option value="$PROJECT_DIR$/src/sample.fxml" />
-        <option value="$PROJECT_DIR$/src/OutputExcel.java" />
-        <option value="$PROJECT_DIR$/src/Controller.java" />
         <option value="$PROJECT_DIR$/src/BadURL.txt" />
         <option value="$PROJECT_DIR$/src/PrimaryParsing.java" />
+        <option value="$PROJECT_DIR$/src/OutputExcel.java" />
+        <option value="$PROJECT_DIR$/src/Controller.java" />
       </list>
     </option>
   </component>
@@ -206,7 +196,9 @@
     <option name="width" value="980" />
     <option name="height" value="1000" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -239,6 +231,12 @@
             </path>
             <path>
               <item name="ParserJava" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ParserJava" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ParserJava" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -252,9 +250,9 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552261320744" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552263988289" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.1640625" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
@@ -340,7 +338,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551907732796</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Убрал аюсолютные пути, сбилдил по 10 java">
+      <created>1552261316537</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1552261316537</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -354,6 +359,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2079288" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -364,12 +370,12 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3298731" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.24106114" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.24106114" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39907727" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3298731" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3298731" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3298731" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3298731" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3298731" />
@@ -435,7 +441,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Изменил кол-во совпадений необходимых для выявления результата" />
-    <option name="LAST_COMMIT_MESSAGE" value="Изменил кол-во совпадений необходимых для выявления результата" />
+    <MESSAGE value="Убрал аюсолютные пути, сбилдил по 10 java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Убрал аюсолютные пути, сбилдил по 10 java" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/ReadExcel.java" />
@@ -559,30 +566,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/OutputExcel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="48" column="20" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/javafx.graphics/com/sun/glass/ui/View.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8823">
           <caret line="555" selection-start-line="555" selection-end-line="555" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="244" column="17" selection-start-line="244" selection-start-column="17" selection-end-line="244" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -599,19 +586,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PrimaryParsing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="243" column="58" selection-start-line="243" selection-start-column="52" selection-end-line="243" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/ParserJava.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -619,6 +593,39 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="97" selection-start-line="13" selection-start-column="97" selection-end-line="13" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PrimaryParsing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="381" selection-start-line="381" selection-end-line="381" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OutputExcel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="76" column="14" selection-start-line="76" selection-start-column="14" selection-end-line="76" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="150" column="16" selection-start-line="150" selection-start-column="16" selection-end-line="150" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -664,7 +671,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>10</last-edited>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

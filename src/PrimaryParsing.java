@@ -379,15 +379,7 @@ public class PrimaryParsing
             //Controller.ShowConsole("Среднее время для одной ссылки:" + Controller.timing);
 
         }
-        Controller.stop_enable = true;
-        Thread.sleep(501);
-        OutputExcel.SaveAndExit();
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Принудительное завершение");
-        alert.setHeaderText("Поиск не закончен");
-        alert.setContentText("Результаты поиска сохранены в "+ Controller.adress2);
-        alert.showAndWait();
-        System.exit(0);
+
 
 
 

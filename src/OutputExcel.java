@@ -74,7 +74,7 @@ public class OutputExcel
             alert.setContentText("Результаты поиска сохранены в "+ Controller.adress2);
 
             //НЕ ЗАБЫТЬ ДОДЕЛАТЬ
-            System.exit(0);
+            //System.exit(0);
 
     }
    /* public static void Save() throws IOException
