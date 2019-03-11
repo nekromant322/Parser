@@ -148,7 +148,7 @@ public class Controller
                     StopBut.setDisable(true);;
                     OutputExcel.SaveAndExit();
 
-                
+
                     System.exit(0);
                     return null;
                 }

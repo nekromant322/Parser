@@ -118,7 +118,7 @@ public class PrimaryParsing
 
 
             Elements urls = doc.getElementsByTag("a");
-            Controller.ShowConsole("debugmessage1");
+
             for (Element url : urls)
             {
                 //... и вытаскиваем их название...
@@ -135,7 +135,7 @@ public class PrimaryParsing
 
         }
 
-        Controller.ShowConsole("debugmessage2");
+
         ArrayList<String> Bad = new ArrayList<>();
         Scanner sc = new Scanner(new File("BadURL.txt"));
         while (sc.hasNext())
@@ -143,7 +143,7 @@ public class PrimaryParsing
             String URL = sc.nextLine();
             Repeats.add(URL);
         }
-        Controller.ShowConsole("debugmessage21");
+
         for(int i = 0 ; i < SecRef.size();i++)  //подтираем ненужные с ресурсами
         {
 
@@ -184,7 +184,7 @@ public class PrimaryParsing
 
 
 
-        Controller.ShowConsole("debugmessage3");
+
 
 
 
@@ -206,7 +206,7 @@ public class PrimaryParsing
         SecRef.clear();
         SecRef.addAll(set);
 
-        Controller.ShowConsole("debugmessage4");
+
 
     }
     void FinalParsing(ArrayList<String> Kw) throws IOException, InterruptedException

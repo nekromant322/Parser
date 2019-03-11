@@ -10,3 +10,4 @@ https://t.me/glphmedia/41
 BadUrlsList:
 https://habr.com/site.webmanifest
 https://t.me/glphmedia/41
+BadUrlsList:
